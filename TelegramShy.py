@@ -189,7 +189,7 @@ dispatcher.add_handler(rainbow_handler)
                                    #all messages a part commands
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
-asyncio.async(dispatcher.add_handler(MessageHandler([Filters.text], echo)))
+asyncio.async(await dispatcher.add_handler(MessageHandler([Filters.text], echo)))
 try:
 	loop.run_forever()
 finally:
