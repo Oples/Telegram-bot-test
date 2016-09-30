@@ -186,7 +186,13 @@ dispatcher.add_handler(CommandHandler('reboot', reboot))  #/reboot
 
 rainbow_handler = CommandHandler('rainbows', rainbow) #/rainbows
 dispatcher.add_handler(rainbow_handler)
-echo_handler = MessageHandler([Filters.text], echo)   #all messages a part commands
-dispatcher.add_handler(echo_handler)
+                                   #all messages a part commands
+loop = asyncio.get_event_loop()
+future = asyncio.Future()
+asyncio.async(dispatcher.add_handler(MessageHandler([Filters.text], echo)))
+try:
+	loop.run_forever()
+finally:
+   loop.close()
 
 updater.start_polling()
