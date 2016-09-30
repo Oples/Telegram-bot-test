@@ -151,11 +151,6 @@ In the Rainbow Factory, where not a single soul gets through
 Source: Aurora Dawn """
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
-   async def EchoTest:
-      def okidoky:
-	print('ok')
-      dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
-	
 
    def halp(bot, update):
       msgbox  = '/help                -This :T\n'
@@ -170,6 +165,13 @@ except HTTPError:
    pass
 except:
    pass
+
+@asyncio.coroutine
+def EchoTest:
+   def okidoky:
+      print('ok')
+   dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
+	
 
 #Messages handler!
 start_handler = CommandHandler('start', start)        #/start
