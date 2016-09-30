@@ -1,6 +1,8 @@
 import os
 import sys
+# cfg.py where the bot token is hidden :D
 from cfg import *
+# TODO: Make async work :T
 import asyncio 
 import logging
 import youtube_dl
@@ -10,7 +12,7 @@ from cleverbot import Cleverbot
 from translate import translator
 
 try:
-   updater = Updater(token=TOKEN)
+   updater = Updater(token=TOKEN) # Hidden bot token
 
    dispatcher = updater.dispatcher
    mind = Cleverbot()
@@ -85,7 +87,6 @@ try:
    def ping(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
 
-
    def ts(bot, update):
       msg = translator('en', 'zh-TW' , update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
@@ -99,18 +100,18 @@ try:
       msg = update.message.text
       msg = msg.replace('/cmd ', '') 
       print(msg)
-      with open('file.txt','w') as f:
+      with open('file.txt','w') as f: # re-write file
          f.close()
-      with open('file.txt','r') as f:
+      with open('file.txt','r') as f: # read the output of the bash
          os.system(msg+' >> file.txt')
          bot.sendMessage(chat_id=update.message.chat_id, text=f.read())
          f.close()
-         os.system('rm file.txt')
+         os.system('rm file.txt')     # dirty reset(Not really needed) write the file does replace the content with nothing already
 
    def sudo(bot, update):
       if str(30954744) == str(update.message.chat_id):
          msg = update.message.text
-         msg = msg.replace('/sudo ', 'echo -e "pon3\\n" | sudo -S ') 
+         msg = msg.replace('/sudo ', 'echo -e "pon3\\n" | sudo -S ') # my sudo passwd
          print(msg)
          with open('file.txt','w') as f:
             f.close()
@@ -120,12 +121,12 @@ try:
             f.close()
             os.system('rm file.txt')
 
-   def pong(bot, update):
+   def pong(bot, update): # next time I'll be more savage
       bot.sendMessage(chat_id=update.message.chat_id, text="No!")
       bot.sendSticker(chat_id=update.message.chat_id, sticker=open("./sticker.webp", 'rb'))
       print(update.message.chat_id)
       #reply_keyboard = ['ping']
-      #update.message.reply_text('',
+      #update.message.reply_text('',)
       #     reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
 
 
@@ -166,6 +167,8 @@ except HTTPError:
 except:
    pass
 
+# TODO: FIX THIS PLZ ;___;
+#
 #@asyncio.coroutine
 #def EchoTest:
 #   def okidoky:
