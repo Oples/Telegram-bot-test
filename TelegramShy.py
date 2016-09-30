@@ -55,14 +55,30 @@ try:
 
    def start(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="I'm a beautiful pone, please talk to me m8!")
-      
-      
+        
+	
    def reboot(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
       os.system("git pull origin master")
       os.system("python3.5 TelegramShy.py")
       sys.exit(0)
 
+   def ytdwl(bot, update):
+         msg = update.message.text
+         try:
+            with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
+                info_dict = ydl.extract_info(msg, download=False)
+                bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
+                ydl.download([msg])
+                video_title = info_dict.get('title', None)
+                video_title = video_title.replace('|','_')
+                print(video_title+'-'+info_dict['id']+'.mp4')
+                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp4', 'rb'), filename=video_title+'.mp4')
+                #except DownloadError(message, exc_info):
+                #bot.sendMessage (message.channel,'Bad Link')
+         except:
+            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
+	
    def echo(bot, update):
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -80,13 +96,13 @@ try:
            except:
               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
          else:
-          bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
-          print(update.message.text)
-
+           bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
+           print(update.message.text)
 
    def ping(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
 
+   
    def ts(bot, update):
       msg = translator('en', 'zh-TW' , update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
@@ -157,8 +173,8 @@ Source: Aurora Dawn """
       msgbox  = '/help                -This :T\n'
       msgbox += '/ping                -Server test\n'
       msgbox += '/rainbows       -Fancy poem\n'
-      msgbox += '\n'
-      msgbox += '       Clever bot will answer to normal chat\n'
+      msgbox += '/yt                  -dwload mp4\n'
+      msgbox += 'Clever bot will answer to normal chat\n'
       msgbox += 'If you post links she will automaticaly download mp3\n'
       bot.sendMessage(chat_id=update.message.chat_id, text=msgbox)
 
@@ -188,7 +204,7 @@ dispatcher.add_handler(halp_handler)
 
 dispatcher.add_handler(CommandHandler('cmd', cmd)) #/cmd <- probable a fancy code
 
-dispatcher.add_handler(CommandHandler('ts', ts))
+dispatcher.add_handler(CommandHandler('yt', ytdwl))
 
 dispatcher.add_handler(CommandHandler('sudo', sudo)) #/cmd <- probable a fancy code
 
