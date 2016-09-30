@@ -166,11 +166,11 @@ except HTTPError:
 except:
    pass
 
-@asyncio.coroutine
-def EchoTest:
-   def okidoky:
-      print('ok')
-   dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
+#@asyncio.coroutine
+#def EchoTest:
+#   def okidoky:
+#  print('ok')
+#  dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
 	
 
 #Messages handler!
@@ -201,7 +201,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
 
-asyncio.async(EchoTest)
+#asyncio.async(EchoTest)
 
 try:
        loop.run_forever()
