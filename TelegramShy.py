@@ -1,4 +1,5 @@
 import os
+import sys
 from cfg import *
 import asyncio 
 import logging
@@ -58,8 +59,8 @@ try:
       bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
       os.system("git pull origin master")
       os.system("python3.5 TelegramShy.py")
+      sys.exit(0)
 
-   @asyncio.coroutine
    def echo(bot, update):
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -150,6 +151,11 @@ In the Rainbow Factory, where not a single soul gets through
 Source: Aurora Dawn """
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
+   @asyncio.coroutine
+   def Echo_test:
+      dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
+	
+
    def halp(bot, update):
       msgbox  = '/help                -This :T\n'
       msgbox += '/ping                -Server test\n'
@@ -186,15 +192,17 @@ dispatcher.add_handler(CommandHandler('reboot', reboot))  #/reboot
 
 rainbow_handler = CommandHandler('rainbows', rainbow) #/rainbows
 dispatcher.add_handler(rainbow_handler)
-                                   #all messages a part commands
+
+dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
+
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
 
-dispatcher.add_handler(MessageHandler([Filters.text], asyncio.async(echo)))
+asyncio.async(Echo_test)
 
 try:
-	loop.run_forever()
+       loop.run_forever()
 finally:
-   loop.close()
+       loop.close()
 
 updater.start_polling()
