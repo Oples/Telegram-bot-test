@@ -1,5 +1,5 @@
 import os
-import cfg
+from cfg import *
 import asyncio 
 import logging
 import youtube_dl
