@@ -151,9 +151,10 @@ In the Rainbow Factory, where not a single soul gets through
 Source: Aurora Dawn """
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
-   @asyncio.coroutine
-   def Echo_test:
-      dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
+   async def EchoTest:
+      def okidoky:
+	print('ok')
+      dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
 	
 
    def halp(bot, update):
@@ -198,7 +199,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
 
-asyncio.async(Echo_test)
+asyncio.async(EchoTest)
 
 try:
        loop.run_forever()
