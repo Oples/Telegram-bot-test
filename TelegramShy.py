@@ -52,8 +52,14 @@ try:
 
    def start(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="I'm a beautiful pone, please talk to me m8!")
+      
+      
+   def reboot(bot, update):
+      bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
+      os.system("git pull origin master")
+      os.system("python3.5 TelegramShy.py")
 
-
+   @asyncio.coroutine
    def echo(bot, update):
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -167,10 +173,17 @@ pong_handler = CommandHandler('pong', pong)           #/pong
 dispatcher.add_handler(pong_handler)
 halp_handler = CommandHandler('help', halp)           #/help
 dispatcher.add_handler(halp_handler)
+
 dispatcher.add_handler(CommandHandler('cmd', cmd)) #/cmd <- probable a fancy code
+
 dispatcher.add_handler(CommandHandler('ts', ts))
+
 dispatcher.add_handler(CommandHandler('sudo', sudo)) #/cmd <- probable a fancy code
+
 dispatcher.add_handler(CommandHandler('file', files))  #/file
+
+dispatcher.add_handler(CommandHandler('reboot', reboot))  #/reboot
+
 rainbow_handler = CommandHandler('rainbows', rainbow) #/rainbows
 dispatcher.add_handler(rainbow_handler)
 echo_handler = MessageHandler([Filters.text], echo)   #all messages a part commands
