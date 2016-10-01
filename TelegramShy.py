@@ -219,10 +219,12 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 
 @asyncio.coroutine
 def AutoRE():
-     yield from asyncio.sleep(10)
-     raise TelegramError
-     #os.system('sh ~/telebot.sh')
-     #sys.exit(0)
+     while True:
+       yield from asyncio.sleep(10)
+       raise NetworkError
+       #raise error.NetworkError
+       os.system('sh ~/telebot.sh')
+       sys.exit(0)
 
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
