@@ -219,8 +219,8 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 
 @asyncio.coroutine
 def AutoRE():
-     yield from asyncio.sleep(1800)
-     raise SystemExit
+     yield from asyncio.sleep(10)
+     os.system('sh ~/telebot.sh')
      sys.exit(0)
 
 loop = asyncio.get_event_loop()
