@@ -232,14 +232,12 @@ try:
 finally:
        loop.close()
 
-class HoplesTreasure():
-    def Start():
-        returns = False
-        print('updating...')
-        while(returns == False):
-           returns = updater.start_polling()
-           if (returns):
-               print('all ok')
-        
 
-HoplesTreasure.Start()
+returns = False
+print('updating...')
+while(returns == False):
+   returns = updater.start_polling()
+   updater.start_polling()
+   if (returns):
+       print('all ok')
+
