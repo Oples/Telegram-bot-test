@@ -220,7 +220,8 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 @asyncio.coroutine
 def AutoRE():
      yield from asyncio.sleep(1800)
-     sys.exit()
+     raise SystemExit
+     sys.exit(0)
 
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
@@ -234,6 +235,9 @@ while(returns == False):
    updater.start_polling()
    if (returns):
        print('all ok')
+   else:
+       print('Check the connection & bot plz fix :C')
+       time.sleep(0.5)
 
 try:
        loop.run_forever()
