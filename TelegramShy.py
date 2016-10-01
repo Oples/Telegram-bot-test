@@ -224,7 +224,7 @@ def Commands():
 @asyncio.coroutine
 def AutoRE():
      while True:
-       yield from asyncio.sleep(5)
+       yield from asyncio.sleep(1800)
        Commands()
        sys.exit(0)
 
