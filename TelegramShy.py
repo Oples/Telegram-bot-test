@@ -217,14 +217,20 @@ dispatcher.add_handler(rainbow_handler)
 
 dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
 
-loop = asyncio.get_event_loop()
-future = asyncio.Future()
+#loop = asyncio.get_event_loop()
+#future = asyncio.Future()
 
 #asyncio.async(EchoTest)
 
-try:
-       loop.run_forever()
-finally:
-       loop.close()
+#try:
+#       loop.run_forever()
+#finally:
+#       loop.close()
+ 
+def HoplesTreasure:
+    def Start():
+       bool returns = updater.start_polling()
+       if (returns):
+	  print('all ok')
 
-updater.start_polling()
+HoplesTreasure.Start()
