@@ -237,8 +237,13 @@ finally:
 
 class HoplesTreasure():
     def Start():
-       returns = updater.start_polling()
-       if (returns):
-          print('all ok')
+        returns = False
+        while(returns == False):
+           returns = updater.start_polling()
+           if (returns):
+               print('all ok')
+           else:
+               print('WHAT IS HAPPENING?')
+        
 
 HoplesTreasure.Start()
