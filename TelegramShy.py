@@ -227,12 +227,6 @@ future = asyncio.Future()
 
 asyncio.async(AutoRE())
 
-try:
-       loop.run_forever()
-finally:
-       loop.close()
-
-
 returns = False
 print('updating...')
 while(returns == False):
@@ -240,4 +234,10 @@ while(returns == False):
    updater.start_polling()
    if (returns):
        print('all ok')
+
+try:
+       loop.run_forever()
+finally:
+       loop.close()
+
 
