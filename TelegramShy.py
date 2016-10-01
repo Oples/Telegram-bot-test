@@ -221,8 +221,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 def AutoRE():
      while True:
        yield from asyncio.sleep(10)
-       raise NetworkError
-       #raise error.NetworkError
+       raise telegram.error.NetworkError
        os.system('sh ~/telebot.sh')
        sys.exit(0)
 
