@@ -219,11 +219,8 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 
 @asyncio.coroutine
 def AutoRE():
-     yield from asyncio.sleep(1)
-     Reboot()
-
-def Reboot():
-	sys.exit()
+     yield from asyncio.sleep(1800)
+     sys.exit()
 
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
@@ -238,12 +235,11 @@ finally:
 class HoplesTreasure():
     def Start():
         returns = False
+        print('updating...')
         while(returns == False):
            returns = updater.start_polling()
            if (returns):
                print('all ok')
-           else:
-               print('WHAT IS HAPPENING?')
         
 
 HoplesTreasure.Start()
