@@ -228,7 +228,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 #       loop.close()
 class HoplesTreasure():
     def Start():
-       bool returns = updater.start_polling()
+       returns = updater.start_polling()
        if (returns):
 	  print('all ok')
 
