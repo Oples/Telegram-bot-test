@@ -218,6 +218,7 @@ dispatcher.add_handler(rainbow_handler)
 dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
 
 def Commands():
+     Updater.stop()
      os.system('sh ~/telebot.sh')
 
 @asyncio.coroutine
