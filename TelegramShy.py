@@ -217,15 +217,24 @@ dispatcher.add_handler(rainbow_handler)
 
 dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
 
-#loop = asyncio.get_event_loop()
-#future = asyncio.Future()
+@asyncio.coroutine
+def AutoRE():
+     yell from asyncio.sleep(1800)
+     Reboot()
 
-#asyncio.async(EchoTest)
+def Reboot():
+	sys.exit()
 
-#try:
-#       loop.run_forever()
-#finally:
-#       loop.close()
+loop = asyncio.get_event_loop()
+future = asyncio.Future()
+
+asyncio.async(AutoRE())
+
+try:
+       loop.run_forever()
+finally:
+       loop.close()
+
 class HoplesTreasure():
     def Start():
        returns = updater.start_polling()
