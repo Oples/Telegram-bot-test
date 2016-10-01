@@ -219,7 +219,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 
 @asyncio.coroutine
 def AutoRE():
-     yell from asyncio.sleep(1800)
+     yield from asyncio.sleep(1800)
      Reboot()
 
 def Reboot():
