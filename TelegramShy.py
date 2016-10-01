@@ -13,7 +13,7 @@ from translate import translator
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-
+   print('booting')
    dispatcher = updater.dispatcher
    mind = Cleverbot()
 
@@ -219,7 +219,7 @@ dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a par
 
 @asyncio.coroutine
 def AutoRE():
-     yield from asyncio.sleep(1800)
+     yield from asyncio.sleep(1)
      Reboot()
 
 def Reboot():
