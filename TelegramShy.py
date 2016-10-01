@@ -218,13 +218,13 @@ dispatcher.add_handler(rainbow_handler)
 dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
 
 def Commands():
-     Updater.stop()
+     updater.stop()
      os.system('sh ~/telebot.sh')
 
 @asyncio.coroutine
 def AutoRE():
      while True:
-       yield from asyncio.sleep(1800)
+       yield from asyncio.sleep(5)
        Commands()
        sys.exit(0)
 
