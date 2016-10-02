@@ -40,6 +40,8 @@ try:
            'key': 'FFmpegExtactAudio',
            'preferredcodec': 'mp4',
        }],
+       'logger': MyLogger(),
+       'progress_hooks': [my_hook],
    }
    ydl_opts = {               # OPTIONS youtube-dl :T
        'format': 'bestaudio/best',
