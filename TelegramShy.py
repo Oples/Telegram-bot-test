@@ -58,12 +58,6 @@ try:
    def start(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="I'm a beautiful pone, please talk to me m8!")
         
-	
-   def reboot(bot, update):
-      bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
-      updater.stop()
-      sys.exit(0)
-
    def ytdwl(bot, update):
         msg = update.message.text
         msg = msg.replace('/yt ','')
@@ -188,6 +182,16 @@ except SystemExit:
 except:
    print('\n  ERROR\n')
 
+#away from the exceptions
+def Commands():
+     updater.stop()
+     os.system('sh ~/telebot.sh')
+
+def reboot(bot, update):
+   bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
+   Commands()
+#this 2 reboots the sys
+	
 # TODO: FIX THIS PLZ ;___;
 #
 #@asyncio.coroutine
@@ -221,10 +225,6 @@ rainbow_handler = CommandHandler('rainbows', rainbow) #/rainbows
 dispatcher.add_handler(rainbow_handler)
 
 dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
-
-def Commands():
-     updater.stop()
-     os.system('sh ~/telebot.sh')
 
 @asyncio.coroutine
 def AutoRE():
