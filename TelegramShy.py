@@ -61,6 +61,7 @@ try:
    def ytdwl(bot, update):
         msg = update.message.text
         msg = msg.replace('/yt ','')
+        msg = msg.replace(' ','')
         print(msg)
         try:
            with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
