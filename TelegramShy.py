@@ -180,6 +180,8 @@ Source: Aurora Dawn """
 
 except ConnectionError:
    Commands()
+except SystemExit:
+   print('*blushes*')
 except:
    pass
 
