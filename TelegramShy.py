@@ -59,8 +59,7 @@ try:
 	
    def reboot(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
-      os.system("git pull origin master")
-      os.system("python3.5 TelegramShy.py")
+      Commands()
       sys.exit(0)
 
    def ytdwl(bot, update):
@@ -224,7 +223,7 @@ def Commands():
 @asyncio.coroutine
 def AutoRE():
      while True:
-       yield from asyncio.sleep(1800)
+       yield from asyncio.sleep(1200)
        Commands()
        sys.exit(0)
 
