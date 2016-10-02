@@ -183,7 +183,7 @@ except ConnectionError:
 except SystemExit:
    print('*blushes*')
 except:
-   pass
+   print('\n  ERROR\n')
 
 # TODO: FIX THIS PLZ ;___;
 #
