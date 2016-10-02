@@ -66,20 +66,22 @@ try:
       sys.exit(0)
 
    def ytdwl(bot, update):
-         msg = update.message.text
-         try:
-            with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
-                info_dict = ydl.extract_info(msg, download=False)
-                bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
-                ydl.download([msg])
-                video_title = info_dict.get('title', None)
-                video_title = video_title.replace('|','_')
-                print(video_title+'-'+info_dict['id']+'.mp4')
-                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp4', 'rb'), filename=video_title+'.mp4')
-                #except DownloadError(message, exc_info):
-                #bot.sendMessage (message.channel,'Bad Link')
-         except:
-            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
+        msg = update.message.text
+        msg = msg.replace(' ','')
+        print(msg)
+        try:
+           with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
+               info_dict = ydl.extract_info(msg, download=False)
+               bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
+               ydl.download([msg])
+               video_title = info_dict.get('title', None)
+               video_title = video_title.replace('|','_')
+               print(video_title+'-'+info_dict['id']+'.mp4')
+               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp4', 'rb'), filename=video_title+'.mp4')
+               #except DownloadError(message, exc_info):
+               #bot.sendMessage (message.channel,'Bad Link')
+        except:
+           bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
 	
    def echo(bot, update):
          msg = update.message.text
