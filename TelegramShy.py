@@ -177,8 +177,8 @@ Source: Aurora Dawn """
       msgbox += 'If you post links she will automaticaly download mp3\n'
       bot.sendMessage(chat_id=update.message.chat_id, text=msgbox)
 
-except HTTPError:
-   pass
+except ConnectionError:
+   Commands()
 except:
    pass
 
