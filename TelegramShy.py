@@ -62,7 +62,6 @@ try:
    def reboot(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
       updater.stop()
-      os.system('sh ~/telebot.sh')
       sys.exit(0)
 
    def ytdwl(bot, update):
