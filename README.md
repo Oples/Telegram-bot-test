@@ -3,7 +3,7 @@
  soo I've made an asyncronus time to reboot it all up
  :3 well a part that it should work properly 
 # Features
- /cmd   to execute commands (!be aware it's risky soo use it,modify to private use only!)\n
- /sudo  same as cmd but with root privilegies\n
- /ts    traduce any text to english\n
+ /cmd   to execute commands (!be aware it's risky soo use it,modify to private use only!)<br />
+ /sudo  same as cmd but with root privilegies<br />
+ /ts    traduce any text to english<br />
  
