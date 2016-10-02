@@ -59,7 +59,8 @@ try:
 	
    def reboot(bot, update):
       bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
-      Commands()
+      updater.stop()
+      os.system('sh ~/telebot.sh')
       sys.exit(0)
 
    def ytdwl(bot, update):
@@ -238,7 +239,7 @@ while(returns == False):
    returns = updater.start_polling()
    updater.start_polling()
    if (returns):
-       print('all ok')
+       print('\n\n\n\all ok  Bot IS UP!')
    else:
        print('Check the connection & bot plz fix :C')
        time.sleep(0.5)
