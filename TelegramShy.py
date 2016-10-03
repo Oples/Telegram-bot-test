@@ -70,6 +70,7 @@ try:
                ydl.download([msg])
                video_title = info_dict.get('title', None)
                video_title = video_title.replace('|','_')
+               video_title = video_title.replace('?','')
                print(video_title+'-'+info_dict['id']+'.webm')
                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.webm', 'rb'), filename=video_title+'.webm')
                #except DownloadError(message, exc_info):
