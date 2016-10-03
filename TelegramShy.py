@@ -38,7 +38,7 @@ try:
        'format': 'bestaudio/best',
        'postprocessors': [{
            'key': 'FFmpegVideoConvertor',
-           'preferedformat': 'mp4',
+           'preferedformat': 'webm',
        }],
        'logger': MyLogger(),
        'progress_hooks': [my_hook],
