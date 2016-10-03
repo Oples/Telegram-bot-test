@@ -71,8 +71,8 @@ try:
                video_title = info_dict.get('title', None)
                video_title = video_title.replace('|','_')
                video_title = video_title.replace('?','')
-               print(video_title+'-'+info_dict['id']+'.webm')
-               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.webm', 'rb'), filename=video_title+'.webm')
+               print(video_title+'-'+info_dict['id']+'.mp4')
+               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp4', 'rb'), filename=video_title+'.mp4')
                #except DownloadError(message, exc_info):
                #bot.sendMessage (message.channel,'Bad Link')
         except:
