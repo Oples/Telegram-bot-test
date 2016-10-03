@@ -35,13 +35,13 @@ try:
            print('Done downloading, now converting ...')
 
    ydl_opts1= {
-       'format': 'bestaudio/best',
-       'postprocessors': [{
-           'key': 'FFmpegExtactAudio',
-           'preferredcodec': 'mp4',
-       }],
-       'logger': MyLogger(),
-       'progress_hooks': [my_hook],
+       #'format': 'bestaudio/best',
+       #'postprocessors': [{
+       #    'key': 'FFmpegExtactAudio',
+       #    'preferredcodec': 'mp4',
+       #}],
+       #'logger': MyLogger(),
+       #'progress_hooks': [my_hook],
    }
    ydl_opts = {               # OPTIONS youtube-dl :T
        'format': 'bestaudio/best',
@@ -70,8 +70,8 @@ try:
                ydl.download([msg])
                video_title = info_dict.get('title', None)
                video_title = video_title.replace('|','_')
-               print(video_title+'-'+info_dict['id']+'.mp4')
-               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp4', 'rb'), filename=video_title+'.mp4')
+               print(video_title+'-'+info_dict['id']+'.mkv')
+               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mkv', 'rb'), filename=video_title+'.mkv')
                #except DownloadError(message, exc_info):
                #bot.sendMessage (message.channel,'Bad Link')
         except:
