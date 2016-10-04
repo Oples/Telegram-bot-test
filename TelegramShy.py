@@ -5,6 +5,7 @@ from cfg import *
 # TODO: Make async work :T
 import asyncio 
 import logging
+import datetime
 import youtube_dl
 from telegram import *
 from telegram.ext import *
@@ -17,7 +18,7 @@ future = asyncio.Future()
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting')               # The token is needed for the bot to log in to an account
+   print('booting'+ datetime.time())               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
 
@@ -83,6 +84,12 @@ try:
         except:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
 	
+   # TODO: FIX THIS PLZ ;___;
+    
+   def okidoky(bot, update):
+       print('Text: ')
+       echo(bot, update)
+        
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -198,13 +205,9 @@ def reboot(bot, update):
    bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
    Commands()
 #this 2 reboots the sys
-	
-# TODO: FIX THIS PLZ ;___;
-def okidoky(bot, update):
-    print('Text: ')
-    echo(bot, update)
 
-dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #async all messages a part commands
+
+dispatcher.add_handler(MessageHandler([Filters.text],okidoky))  #async all messages a part commands
 
 #Messages handler!
 dispatcher.add_handler(CommandHandler('start', start))     # /start Telegram force the user to use this command before chatting
