@@ -18,7 +18,7 @@ future = asyncio.Future()
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting'+str( datetime.datetime.now().time()))               # The token is needed for the bot to log in to an account
+   print('booting  '+str( datetime.datetime.now().time()))               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
 
@@ -248,7 +248,7 @@ while(returns == False):
    returns = updater.start_polling()
    updater.start_polling()
    if (returns):
-       print('\n\n\n\all ok  Bot IS UP!')
+       print('\n\n\nall ok  Bot IS UP!')
    else:
        print('Check the connection & bot plz fix :C')
        time.sleep(0.5)
