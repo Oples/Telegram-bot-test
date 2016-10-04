@@ -18,7 +18,7 @@ future = asyncio.Future()
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting')               # The token is needed for the bot to log in to an account
+   print('booting'+str(datetime.hour)+':'+str(datetime.minute))               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
 
@@ -85,12 +85,8 @@ try:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
 	
    # TODO: FIX THIS PLZ ;___;
-    
-   def okidoky(bot, update):
-       print('Text: ')
-       asyncio.async(echo(bot, update))# call the below function :D
       
-   @asyncio.coroutine
+   @run_async
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -208,7 +204,7 @@ def reboot(bot, update):
 #this 2 reboots the sys
 
 
-dispatcher.add_handler(MessageHandler([Filters.text],okidoky))  #async all messages a part commands
+dispatcher.add_handler(MessageHandler([Filters.text],echo))  #async all messages a part commands
 
 #Messages handler!
 dispatcher.add_handler(CommandHandler('start', start))     # /start Telegram force the user to use this command before chatting
