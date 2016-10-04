@@ -11,20 +11,25 @@ from telegram.ext import *
 from cleverbot import Cleverbot
 from translate import translator
 
+# Inizializyng the asyncronous classes
+loop = asyncio.get_event_loop()
+future = asyncio.Future()
+
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting')
+   print('booting')               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
-   mind = Cleverbot()
+   mind = Cleverbot()             # Cleverbot functions
 
    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+                                  # Default staff
 
-   class MyLogger(object):    # Youtube-dl
+   class MyLogger(object):    # Youtube-dl info on errors/warning
        def debug(self, msg):
            pass
 
        def warning(self, msg):
-           pass
+           print(msg)
 
        def error(self, msg):
            print(msg)
@@ -34,7 +39,7 @@ try:
        if d['status'] == 'finished':
            print('Done downloading, now converting ...')
 
-   ydl_opts1= {
+   ydl_opts1= {              # Options for webm/video download
        'format': 'bestaudio/best',
        'postprocessors': [{
            'key': 'FFmpegVideoConvertor',
@@ -43,7 +48,7 @@ try:
        'logger': MyLogger(),
        'progress_hooks': [my_hook],
    }
-   ydl_opts = {               # OPTIONS youtube-dl :T
+   ydl_opts = {               # OPTIONS youtube-dl mp3 :T
        'format': 'bestaudio/best',
        'postprocessors': [{
            'key': 'FFmpegExtractAudio',
@@ -55,10 +60,10 @@ try:
    }
 
 
-   def start(bot, update):
+   def start(bot, update):      # Wellcome message
       bot.sendMessage(chat_id=update.message.chat_id, text="I'm a beautiful pone, please talk to me m8!")
         
-   def ytdwl(bot, update):
+   def ytdwl(bot, update):     # /yt command
         msg = update.message.text
         msg = msg.replace('/yt ','')
         msg = msg.replace(' ','')
@@ -78,7 +83,7 @@ try:
         except:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
 	
-   def echo(bot, update):
+   def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
            try:
@@ -98,20 +103,20 @@ try:
            bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
            print(update.message.text)
 
-   def ping(bot, update):
+   def ping(bot, update):         # ez peasy test response
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
 
    
-   def ts(bot, update):
+   def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
-   def files(bot, update):
+   def files(bot, update):       # Send source file
       if str(30954744) == str(update.message.chat_id):
            bot.sendDocument(chat_id=update.message.chat_id, document=open('TelegramShy.py', 'rb'))
            print('        Sending file telegramShy.py')
 
-   def cmd(bot, update):
+   def cmd(bot, update):        # AWARE OF THE RISK
       msg = update.message.text
       msg = msg.replace('/cmd ', '') 
       print(msg)
@@ -234,9 +239,6 @@ def AutoRE():
        yield from asyncio.sleep(1200)
        Commands()
        sys.exit(0)
-
-loop = asyncio.get_event_loop()
-future = asyncio.Future()
 
 asyncio.async(AutoRE())
 
