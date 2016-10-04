@@ -233,18 +233,18 @@ dispatcher.add_handler(CommandHandler('rainbows', rainbow))# /rainbows
 
 #dispatcher.add_handler(MessageHandler([Filters.text],echo))# all messages a part commands
 
-@asyncio.coroutine
+@asyncio.coroutine         # Async for the reboot after 20 minutes
 def AutoRE():
      while True:
        yield from asyncio.sleep(1200)
        Commands()
        sys.exit(0)
 
-asyncio.async(AutoRE())
+asyncio.async(AutoRE())    # Start the async
 
 returns = False
 print('updating...')
-while(returns == False):
+while(returns == False):   # Start the bot if it returns False the the bot Can't log-in
    returns = updater.start_polling()
    updater.start_polling()
    if (returns):
