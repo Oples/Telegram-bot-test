@@ -18,7 +18,7 @@ future = asyncio.Future()
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting'+ datetime.time())               # The token is needed for the bot to log in to an account
+   print('booting')               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
 
