@@ -88,8 +88,9 @@ try:
     
    def okidoky(bot, update):
        print('Text: ')
-       echo(bot, update)
-        
+       asyncio.async(echo(bot, update))# call the below function :D
+      
+   @asyncio.coroutine
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
