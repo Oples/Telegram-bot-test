@@ -87,15 +87,8 @@ try:
    # TODO: FIX THIS PLZ ;___;
     
    def okidoky(bot, update):
-       loop = asyncio.get_event_loop()
-       future = asyncio.Future()
        print('Text: ')
        asyncio.async(echo(bot, update))# call the below function :D
-       try:
-           loop.run_forever()
-       finally:
-           loop.close()
-
       
    @asyncio.coroutine
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
