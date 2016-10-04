@@ -18,7 +18,7 @@ future = asyncio.Future()
 
 try:
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('booting') #+str(datetime.hour)+':'+str(datetime.minute))               # The token is needed for the bot to log in to an account
+   print('booting'+str( datetime.datetime.now().time()))               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
 
@@ -88,7 +88,7 @@ try:
      
    def okidoky(bot, update):
          print('Text: ')
-         dispatcher.run_async(echo(bot, update))
+         echo(bot, update)
 
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
