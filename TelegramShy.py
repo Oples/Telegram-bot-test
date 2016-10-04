@@ -85,7 +85,11 @@ try:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
 	
    # TODO: FIX THIS PLZ ;___;
-   
+     
+   def okidoky(bot, update):
+         print('Text: ')
+         dispatcher.run_async(echo(bot, update))
+
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
          if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
@@ -203,7 +207,7 @@ def reboot(bot, update):
 #this 2 reboots the sys
 
 
-dispatcher.add_handler(dispatcher.run_async(MessageHandler([Filters.text],echo)))  #async all messages a part commands
+dispatcher.add_handler(MessageHandler([Filters.text],okidoky))  #async all messages a part commands
 
 #Messages handler!
 dispatcher.add_handler(CommandHandler('start', start))     # /start Telegram force the user to use this command before chatting
