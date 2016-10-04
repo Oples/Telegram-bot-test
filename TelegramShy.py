@@ -200,38 +200,35 @@ def reboot(bot, update):
 #this 2 reboots the sys
 	
 # TODO: FIX THIS PLZ ;___;
-#
-#@asyncio.coroutine
-#def EchoTest:
-#   def okidoky:
-#  print('ok')
-#  dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #all messages a part commands
-	
+def okidoky(bot, update):
+    print('Text: ')
+    echo(bot, update)
+
+dispatcher.add_handler(MessageHandler([Filters.text],okidoki))  #async all messages a part commands
 
 #Messages handler!
-start_handler = CommandHandler('start', start)        #/start
-dispatcher.add_handler(start_handler)
-ping_handler = CommandHandler('ping', ping)           #/ping
-dispatcher.add_handler(ping_handler)
-pong_handler = CommandHandler('pong', pong)           #/pong
-dispatcher.add_handler(pong_handler)
-halp_handler = CommandHandler('help', halp)           #/help
-dispatcher.add_handler(halp_handler)
+dispatcher.add_handler(CommandHandler('start', start))     # /start Telegram force the user to use this command before chatting
 
-dispatcher.add_handler(CommandHandler('cmd', cmd)) #/cmd <- probable a fancy code
+ping_handler = CommandHandler('ping', ping)                # /ping
+dispatcher.add_handler(ping_handler)
+
+dispatcher.add_handler(CommandHandler('pong', pong))       # /pong SHHH secret
+
+dispatcher.add_handler(CommandHandler('help', halp))       # /help
+
+dispatcher.add_handler(CommandHandler('cmd', cmd))         # /cmd  <- probable a fancy code
 
 dispatcher.add_handler(CommandHandler('yt', ytdwl))
 
-dispatcher.add_handler(CommandHandler('sudo', sudo)) #/cmd <- probable a fancy code
+dispatcher.add_handler(CommandHandler('sudo', sudo))       # /sudo <- probable a fancy code
 
-dispatcher.add_handler(CommandHandler('file', files))  #/file
+dispatcher.add_handler(CommandHandler('file', files))      # /file
 
-dispatcher.add_handler(CommandHandler('reboot', reboot))  #/reboot
+dispatcher.add_handler(CommandHandler('reboot', reboot))   # /reboot
 
-rainbow_handler = CommandHandler('rainbows', rainbow) #/rainbows
-dispatcher.add_handler(rainbow_handler)
+dispatcher.add_handler(CommandHandler('rainbows', rainbow))# /rainbows
 
-dispatcher.add_handler(MessageHandler([Filters.text],echo))  #all messages a part commands
+#dispatcher.add_handler(MessageHandler([Filters.text],echo))# all messages a part commands
 
 @asyncio.coroutine
 def AutoRE():
