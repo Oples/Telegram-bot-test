@@ -246,7 +246,6 @@ while(returns == False):
    updater.start_polling()
    if (returns):
        print('\n\n\n\all ok  Bot IS UP!')
-       bot.sendMessage(chat_id=30954744, text='Downloading ...')
    else:
        print('Check the connection & bot plz fix :C')
        time.sleep(0.5)
