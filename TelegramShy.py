@@ -189,8 +189,11 @@ except ConnectionError:
    Commands()
 except SystemExit:
    print('*blushes*')
+except KeyboardInterrupt:
+   print('*blushes*')
 except:
    print('\n  ERROR\n')
+   os.system('sh ~/telebot.sh')
 
 #away from the exceptions
 def Commands():
