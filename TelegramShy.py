@@ -17,10 +17,12 @@ loop = asyncio.get_event_loop()
 future = asyncio.Future()
 
 try:
+   #variable assingment
    updater = Updater(token=TOKEN) # Hidden bot token
    print('booting  '+str( datetime.datetime.now().time()))               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
+   working=0
 
    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
                                   # Default staff
@@ -72,6 +74,7 @@ try:
         try:
            with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
                info_dict = ydl.extract_info(msg, download=False)
+               working=1
                bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
                ydl.download([msg])
                video_title = info_dict.get('title', None)
@@ -81,8 +84,10 @@ try:
                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.webm', 'rb'), filename=video_title+'.webm')
                #except DownloadError(message, exc_info):
                #bot.sendMessage (message.channel,'Bad Link')
+               working=0
         except:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
+           working=0
 	
    # TODO: FIX THIS PLZ ;___;
      
@@ -236,7 +241,8 @@ dispatcher.add_handler(CommandHandler('rainbows', rainbow))# /rainbows
 def AutoRE():
      while True:
        yield from asyncio.sleep(1200)
-       Commands()
+       if (working==0):
+          Commands()
        sys.exit(0)
 
 asyncio.async(AutoRE())    # Start the async
