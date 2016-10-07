@@ -107,7 +107,7 @@ try:
                   #bot.sendMessage (message.channel,'Bad Link')
            except:
               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
-         elif Chat(id=update.message.chat_id, type='private'):
+         elif update.message.forward_from()==update.message.forward_from_chat:
            bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
            print(update.message.text)
 
