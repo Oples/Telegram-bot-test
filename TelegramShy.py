@@ -118,7 +118,7 @@ try:
    def direc(bot, update):
       f = []
       asap = 0
-      mypath="./"
+      mypath="/home/oples/Music"
       for (dirpath, dirnames, filenames) in walk(mypath):
           f.extend(filenames)
           bot.sendMessage(chat_id=update.message.chat_id, text=f[asap])
