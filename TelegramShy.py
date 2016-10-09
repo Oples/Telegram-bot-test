@@ -123,7 +123,6 @@ try:
           f.extend(filenames)
           bot.sendMessage(chat_id=update.message.chat_id, text=f[asap])
           asap += 1
-          break
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
