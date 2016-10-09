@@ -115,7 +115,7 @@ try:
    def ping(bot, update):         # ez peasy test response
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
   
-  def direc(bot, update):
+   def direc(bot, update):
       f = []
       asap = 0
       for (dirpath, dirnames, filenames) in walk(mypath):
