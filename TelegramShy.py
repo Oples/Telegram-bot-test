@@ -118,7 +118,8 @@ try:
    def direc(bot, update):
       f = []
       asap = 0
-      for (dirpath, dirnames, filenames) in walk(mypath):
+      dirpath = "./"
+      for (dirpath, filenames) in walk(mypath):
           f.extend(filenames)
           bot.sendMessage(chat_id=update.message.chat_id, text=f[asap])
           asap += 1
