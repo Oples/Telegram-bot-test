@@ -7,6 +7,7 @@ import asyncio
 import logging
 import datetime
 import youtube_dl
+from os import walk
 from telegram import *
 from telegram.ext import *
 from cleverbot import Cleverbot
@@ -113,8 +114,16 @@ try:
 
    def ping(bot, update):         # ez peasy test response
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
+  
+  def direc(bot, update):
+      f = []
+      asap = 0
+      for (dirpath, dirnames, filenames) in walk(mypath):
+          f.extend(filenames)
+          bot.sendMessage(chat_id=update.message.chat_id, text=f[asap])
+          asap += 1
+          break
 
-   
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
@@ -232,6 +241,8 @@ dispatcher.add_handler(CommandHandler('sudo', sudo))       # /sudo <- probable a
 dispatcher.add_handler(CommandHandler('file', files))      # /file
 
 dispatcher.add_handler(CommandHandler('reboot', reboot))   # /reboot
+
+dispatcher.add_handler(CommandHandler('dir', direc))   # /reboot
 
 dispatcher.add_handler(CommandHandler('rainbows', rainbow))# /rainbows
 
