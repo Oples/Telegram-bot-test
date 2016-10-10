@@ -118,17 +118,15 @@ try:
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
   
    def direc(bot, update):
-      f = []
-      asap = 0
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
       i = 0
-      directories = ""
+      directories = []
       try:
          while True:
-                directories += msg[i]+'\n'
+                directories[1] = msg[i].replace('/home/oples/Music/','')
                 i += 1
-                bot.sendMessage(chat_id=update.message.chat_id, text=msg[i])
+                bot.sendMessage(chat_id=update.message.chat_id, text=directories[i])
       except:
          pass
          print(directories)
