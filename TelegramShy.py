@@ -101,14 +101,15 @@ try:
                   ydl.download([msg])
                   video_title = info_dict.get('title', None)
                   video_title = video_title.replace('|','_')
-                  print(video_title+'-'+info_dict['id']+'.mp3')
-                  bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp3', 'rb'), filename=video_title+'.mp3')
+                  move_up = 'mv ./'+video_title+'-'+info_dict['id']+'.mp3 ./'+video_title+'.mp3'
+                  os.system(move_up)
+                  bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'.mp3', 'rb'), filename=video_title+'.mp3')
                   os.system("mv ./*.mp3 ~/Music/")
                   #except DownloadError(message, exc_info):
                   #bot.sendMessage (message.channel,'Bad Link')
            except:
               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
-         elif update.message.chat_type=='private':
+         elif update.message.chat.type=='private':
            bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
            print(update.message.text)
 
