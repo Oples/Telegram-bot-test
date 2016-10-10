@@ -124,12 +124,12 @@ try:
       directories = ''
       try:
          while True:
-                directories = msg[i]
+                directories += msg[i]+'\n'
                 directories = directories.replace('/home/oples/Music/','')
                 i += 1
-                bot.sendMessage(chat_id=update.message.chat_id, text=directories)
       except:
          pass
+         bot.sendMessage(chat_id=update.message.chat_id, text=directories)
          print(directories)
 
    def ts(bot, update):          # TODO: fix this translator
