@@ -124,21 +124,17 @@ try:
       directories = []
       t = 0
       try:
-         while True:
-              directories[t] += msg[i]+'\n'
-              i += 1
-              if (i==90):
-                  t += 1
+         for i in len(msg):
+             directories[t] += msg[i-1]+'\n'
+             if (i==90):
+                 t += 1
+         directories = directories.replace('/home/oples/Music/','')
+         print(directories)
+         for t in len(directories)
+             bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
       except:
-         try:
-              directories = directories.replace('/home/oples/Music/','')
-              print(directories)
-              t=0
-              while True:
-                  bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
-                  t += 1
-         except:
-              pass
+         print('Array error')
+         pass
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
