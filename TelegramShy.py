@@ -130,7 +130,7 @@ try:
                  t += 1
          directories = directories.replace('/home/oples/Music/','')
          print(directories)
-         for t in len(directories)
+         for t in len(directories):
              bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
       except:
          print('Array error')
