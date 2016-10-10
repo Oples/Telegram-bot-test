@@ -125,7 +125,7 @@ try:
       try:
          while True:
                 directories = msg[i]
-		directories = directories.replace('/home/oples/Music/','')
+                directories = directories.replace('/home/oples/Music/','')
                 i += 1
                 bot.sendMessage(chat_id=update.message.chat_id, text=directories)
       except:
