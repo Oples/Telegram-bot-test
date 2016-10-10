@@ -97,11 +97,11 @@ Source: Aurora Dawn """
        elif message.text.startswith('Hello'):
           bot.reply_to(message, 'Hi :3')
 
+   result = task.wait() # Get the result of the execution
+
+   bot.polling()
+   
 except:
    pass
-
-result = task.wait() # Get the result of the execution
-
-bot.polling()
 
 # api link: https://github.com/eternnoir/pyTelegramBotAPI
