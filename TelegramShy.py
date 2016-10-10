@@ -121,12 +121,13 @@ try:
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
       i = 0
-      directories = []
+      directories = ''
       try:
          while True:
-                directories[1] = msg[i].replace('/home/oples/Music/','')
+                directories = msg[i]
+		directories = directories.replace('/home/oples/Music/','')
                 i += 1
-                bot.sendMessage(chat_id=update.message.chat_id, text=directories[i])
+                bot.sendMessage(chat_id=update.message.chat_id, text=directories)
       except:
          pass
          print(directories)
