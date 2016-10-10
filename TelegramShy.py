@@ -101,7 +101,8 @@ try:
                   ydl.download([msg])
                   video_title = info_dict.get('title', None)
                   video_title = video_title.replace('|','_')
-                  move_up = 'mv ./'+video_title+'-'+info_dict['id']+'.mp3 ./'+video_title+'.mp3'
+                  move_up = str('mv ./'+video_title+'-'+info_dict['id']+'.mp3 ./'+video_title+'.mp3')
+                  print(move_up)
                   os.system(move_up)
                   bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'.mp3', 'rb'), filename=video_title+'.mp3')
                   os.system("mv ./*.mp3 ~/Music/")
@@ -121,7 +122,14 @@ try:
       asap = 0
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
-      bot.sendMessage(chat_id=update.message.chat_id, text=msg)
+      i = 0
+      try:
+         while True:
+                directories += msg[i]
+                i++
+      except:
+         pass
+      bot.sendMessage(chat_id=update.message.chat_id, text=directories)
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
