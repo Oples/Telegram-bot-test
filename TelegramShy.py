@@ -124,13 +124,13 @@ try:
       directories = []
       t = 0
       try:
-         for i in len(msg):
-             directories[t] += msg[i-1]+'\n'
+         for i in range(len(msg)):
+             directories[t] += msg[i]+'\n'
              if (i==90):
                  t += 1
          directories = directories.replace('/home/oples/Music/','')
          print(directories)
-         for t in len(directories):
+         for t in range(len(directories)):
              bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
       except:
          print('Array error')
