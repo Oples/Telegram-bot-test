@@ -123,9 +123,10 @@ try:
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
       i = 0
+      directories = ""
       try:
          while True:
-                directories += msg[i]
+                directories += msg[i]+'\n'
                 i += 1
       except:
          pass
