@@ -83,7 +83,7 @@ try:
                video_title = video_title.replace('?','')
                print(video_title+'-'+info_dict['id']+'.webm')
                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.webm', 'rb'), filename=video_title+'.webm')
-               os.system("mv ./*.webm ~/Video/")
+               os.system("mv ./*.webm ~/Videos/")
                working=0
         except:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
