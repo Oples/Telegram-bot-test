@@ -1,5 +1,6 @@
 import os
 import sys
+import glob
 # cfg.py where the bot token is hidden :D
 from cfg import *
 # TODO: Make async work :T
@@ -7,7 +8,6 @@ import asyncio
 import logging
 import datetime
 import youtube_dl
-from os import walk
 from telegram import *
 from telegram.ext import *
 from cleverbot import Cleverbot
@@ -83,8 +83,7 @@ try:
                video_title = video_title.replace('?','')
                print(video_title+'-'+info_dict['id']+'.webm')
                bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.webm', 'rb'), filename=video_title+'.webm')
-               #except DownloadError(message, exc_info):
-               #bot.sendMessage (message.channel,'Bad Link')
+               os.system("mv ./*.webm ~/Video/")
                working=0
         except:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
@@ -104,6 +103,7 @@ try:
                   video_title = video_title.replace('|','_')
                   print(video_title+'-'+info_dict['id']+'.mp3')
                   bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['id']+'.mp3', 'rb'), filename=video_title+'.mp3')
+                  os.system("mv ./*.mp3 ~/Music/")
                   #except DownloadError(message, exc_info):
                   #bot.sendMessage (message.channel,'Bad Link')
            except:
@@ -119,10 +119,8 @@ try:
       f = []
       asap = 0
       mypath="/home/oples/Music/"
-      for (dirpath, dirnames, filenames) in walk(mypath):
-          f.extend(filenames)
-          bot.sendMessage(chat_id=update.message.chat_id, text=f[asap])
-          asap += 1
+      msg = glob.glob("/home/oples/Music/*.mp3")
+      bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
