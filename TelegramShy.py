@@ -126,7 +126,7 @@ try:
       try:
          while True:
                 directories += msg[i]
-                i++
+                i += 1
       except:
          pass
       bot.sendMessage(chat_id=update.message.chat_id, text=directories)
