@@ -128,10 +128,10 @@ try:
          while True:
                 directories += msg[i]+'\n'
                 i += 1
+                bot.sendMessage(chat_id=update.message.chat_id, text=msg[i])
       except:
          pass
          print(directories)
-      bot.sendMessage(chat_id=update.message.chat_id, text=directories)
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
