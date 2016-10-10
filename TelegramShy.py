@@ -121,15 +121,24 @@ try:
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
       i = 0
-      directories = ''
+      directories = []
+      t = 0
       try:
          while True:
-                directories += msg[i]+'\n'
-                i += 1
+              directories[t] += msg[i]+'\n'
+              i += 1
+              if (i==90):
+                  t += 1
       except:
-         directories = directories.replace('/home/oples/Music/','')
-         print(directories)
-         bot.sendMessage(chat_id=update.message.chat_id, text=directories)
+         try:
+              directories = directories.replace('/home/oples/Music/','')
+              print(directories)
+              t=0
+              while True:
+                  bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
+                  t += 1
+        except:
+              pass
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
