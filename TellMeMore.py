@@ -43,12 +43,9 @@ for a in range(100):
     a += 10
     print(a)
 
-
-def okidoky():
-    print('ok')
-
-
 bot.polling()
 
 
 result = task.wait() # Get the result of the execution
+
+# api link: https://github.com/eternnoir/pyTelegramBotAPI
