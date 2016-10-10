@@ -130,6 +130,7 @@ try:
                 i += 1
       except:
          pass
+         print(directories)
       bot.sendMessage(chat_id=update.message.chat_id, text=directories)
 
    def ts(bot, update):          # TODO: fix this translator
