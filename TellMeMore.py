@@ -82,7 +82,7 @@ Source: Aurora Dawn """
                  ydl.download([msg])
                  video_title = info_dict.get('title', None)
                  video_title = video_title.replace('|','_')
-                 os.system('mv ./'video_title+'-'+info_dict['id']+'.mp3 ./'+ video_title+'.mp3')
+                 os.system('mv ./'+video_title+'-'+info_dict['id']+'.mp3 ./'+ video_title+'.mp3')
                  bot.send_document(message.chat.id, open(video_title+'.mp3', 'rb'))
                  os.system("mv ./*.mp3 ~/Music/")
                  #except DownloadError(message, exc_info):
