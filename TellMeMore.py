@@ -88,7 +88,7 @@ Source: Aurora Dawn """
                  #except DownloadError(message, exc_info):
                  #bot.sendMessage (message.channel,'Bad Link')
           except:
-             bot.send_message(message.chat_id, 'Bad link :T \n\nGive me audio/video sites')
+             bot.send_message(message.chat.id, 'Bad link :T \n\nGive me audio/video sites')
        if message.chat.type == 'private':
           try:
              bot.send_message(message.chat.id, mind.ask(message.text))
