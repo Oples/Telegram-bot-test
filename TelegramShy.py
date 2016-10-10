@@ -137,7 +137,7 @@ try:
               while True:
                   bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
                   t += 1
-        except:
+         except:
               pass
 
    def ts(bot, update):          # TODO: fix this translator
