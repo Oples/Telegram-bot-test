@@ -16,7 +16,7 @@ from translate import translator
 # Inizializyng the asyncronous classes
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
-right_now = datetime.datetime.now().time()
+right_now = str(datetime.datetime.now().time())
 right_now = right_now.split('.')
 
 try:
