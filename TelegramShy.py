@@ -16,6 +16,8 @@ from translate import translator
 # Inizializyng the asyncronous classes
 loop = asyncio.get_event_loop()
 future = asyncio.Future()
+right_now = datetime.datetime.now().time()
+right_now = right_now.split('.')
 
 try:
    #variable assingment
@@ -116,25 +118,34 @@ try:
 
    def ping(bot, update):         # ez peasy test response
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
+    
+   def info(bot, update):         # ez peasy info on message
+      msg  = 'Uptime:     '+right_now[0]+'\n'
+      msg += 'Chat id:    '+update.message.chat_id
+      msg += 'Type:       '+update.message.chat.type
+      msg += 'First name: 'update.message.user.first_name
+      msg += 'Last name:  'update.message.user.last_name
+      bot.sendMessage(chat_id=update.message.chat_id, text=msg)
   
    def direc(bot, update):
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
       i = 0
-      directories = []
+      directories = ['','']
       t = 0
       try:
          for i in range(len(msg)):
              directories[t] += msg[i]+'\n'
              if (i==90):
                  t += 1
-         directories = directories.replace('/home/oples/Music/','')
+         for g in range(len(directories)):
+             directories[g] = directories[g].replace('/home/oples/Music/','')
          print(directories)
-         for t in range(len(directories)):
-             bot.sendMessage(chat_id=update.message.chat_id, text=directories[t])
+         for h in range(len(directories)):
+             bot.sendMessage(chat_id=update.message.chat_id, text=directories[h])
       except:
          print('Array error')
-         pass
+         raise
 
    def ts(bot, update):          # TODO: fix this translator
       msg = translator('en', 'zh-TW' , update.message.text)
