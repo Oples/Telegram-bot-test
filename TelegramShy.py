@@ -123,8 +123,8 @@ try:
       msg  = 'Uptime:     '+right_now[0]+'\n'
       msg += 'Chat id:    '+update.message.chat_id
       msg += 'Type:       '+update.message.chat.type
-      msg += 'First name: 'update.message.user.first_name
-      msg += 'Last name:  'update.message.user.last_name
+      msg += 'First name: '+update.message.user.first_name
+      msg += 'Last name:  '+update.message.user.last_name
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
   
    def direc(bot, update):
