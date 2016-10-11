@@ -121,7 +121,7 @@ try:
     
    def info(bot, update):         # ez peasy info on message
       msg  = 'Uptime:     '+right_now[0]+'\n'
-      msg += 'Chat id:    '+update.message.chat_id
+      msg += 'Chat id:    '+str(update.message.chat_id)
       msg += 'Type:       '+update.message.chat.type
       msg += 'First name: '+update.message.user.first_name
       msg += 'Last name:  '+update.message.user.last_name
