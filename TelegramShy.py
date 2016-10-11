@@ -255,6 +255,8 @@ dispatcher.add_handler(CommandHandler('pong', pong))       # /pong SHHH secret
 
 dispatcher.add_handler(CommandHandler('help', halp))       # /help
 
+dispatcher.add_handler(CommandHandler('info', info))       # /info basic staff
+
 dispatcher.add_handler(CommandHandler('cmd', cmd))         # /cmd  <- probable a fancy code
 
 dispatcher.add_handler(CommandHandler('yt', ytdwl))
