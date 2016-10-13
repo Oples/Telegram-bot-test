@@ -103,7 +103,7 @@ try:
                   ydl.download([msg])
                   video_title = info_dict.get('title', None)
                   video_title = video_title.replace('|','_')
-                  move_up = str('mv ./'+video_title+'-'+info_dict['id']+'.mp3 ./'+video_title+'.mp3')
+                  move_up = str('mv "./'+video_title+'-'+info_dict['id']+'.mp3" "./'+video_title+'.mp3"')
                   print(move_up)
                   os.system(move_up)
                   bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'.mp3', 'rb'), filename=video_title+'.mp3')
