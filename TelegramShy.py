@@ -115,11 +115,11 @@ try:
           
          if (msg.startswith('No') or msg.startswith('no')):
            bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
-        
+          
          if (msg.startswith('yes') or msg.startswith('Yes') or msg.startswith('si') or msg.startswith('Si')):
            bot.sendMessage(chat_id=update.message.chat_id, text='No')
-        
-        elif update.message.chat.type=='private':
+          
+         elif (update.message.chat.type=='private'):
            bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
            print(update.message.text)
 
