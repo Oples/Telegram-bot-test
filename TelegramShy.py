@@ -95,7 +95,7 @@ try:
      
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          msg = update.message.text
-         if (msg.find('http://') != -1 or msg.find('https://') != -1 ):
+         if (msg.startswith('http://') or msg.startswith('https://')):
            try:
               with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                   info_dict = ydl.extract_info(msg, download=False)
@@ -111,8 +111,15 @@ try:
                   #except DownloadError(message, exc_info):
                   #bot.sendMessage (message.channel,'Bad Link')
            except:
-              bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
-         elif update.message.chat.type=='private':
+              bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T')
+          
+         if (msg.startswith('No') or msg.startswith('no')):
+           bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
+        
+         if (msg.startswith('yes') or msg.startswith('Yes') or msg.startswith('si') or msg.startswith('Si')):
+           bot.sendMessage(chat_id=update.message.chat_id, text='No')
+        
+        elif update.message.chat.type=='private':
            bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
            print(update.message.text)
 
