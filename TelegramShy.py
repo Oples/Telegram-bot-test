@@ -113,10 +113,11 @@ try:
            except:
               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T')
           
-         if (msg.startswith('No') or msg.startswith('no')):
+         yes_no = msg.lower()
+         if (yes_no.startswith('no')):
            bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
           
-         if (msg.startswith('yes') or msg.startswith('Yes') or msg.startswith('si') or msg.startswith('Si')):
+         if (yes_no.startswith('yes') or yes_no.startswith('si')):
            bot.sendMessage(chat_id=update.message.chat_id, text='No')
           
          elif (update.message.chat.type=='private'):
@@ -133,7 +134,7 @@ try:
       msg += 'First name: '+str(update.message.user.name)
       #msg += 'Last name:  '+update.message.user.last_name
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
-  
+
    def direc(bot, update):
       mypath="/home/oples/Music/"
       msg = glob.glob("/home/oples/Music/*.mp3")
