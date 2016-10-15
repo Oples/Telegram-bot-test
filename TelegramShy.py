@@ -144,7 +144,7 @@ try:
       t = 0
       try:
          for i in range(len(msg)):
-             directories[t] += '['+i+']'+ msg[i]+'\n'
+             directories[t] += '['+str(i)+']'+ msg[i]+'\n'
              if (i==90):
                  t += 1
          for g in range(len(directories)):
