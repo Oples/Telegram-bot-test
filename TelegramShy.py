@@ -156,7 +156,7 @@ try:
          raise
 
    def ts(bot, update):          # TODO: fix this translator
-      msg = translator('en', , update.message.text)
+      msg = translator('en', 'en', update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
    def files(bot, update):       # Send source file
