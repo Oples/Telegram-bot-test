@@ -161,9 +161,9 @@ try:
            translator= Translator(to_lang="en")
            msg = translator.translate(update.message.text)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
-     except:
+      except:
            bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n:C")
-     
+
    def files(bot, update):       # Send source file
       if str(30954744) == str(update.message.chat_id):
            bot.sendDocument(chat_id=update.message.chat_id, document=open('TelegramShy.py', 'rb'))
