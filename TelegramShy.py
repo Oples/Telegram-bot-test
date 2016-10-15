@@ -11,7 +11,8 @@ import youtube_dl
 from telegram import *
 from telegram.ext import *
 from cleverbot import Cleverbot
-from translate import translator
+# https://github.com/terryyin/google-translate-python YEPPP
+from translate import Translator
 
 # Inizializyng the asyncronous classes
 loop = asyncio.get_event_loop()
@@ -155,10 +156,14 @@ try:
          print('Array error')
          raise
 
-   def ts(bot, update):          # TODO: fix this translator
-      msg = translator('en', 'en', update.message.text)
-      bot.sendMessage(chat_id=update.message.chat_id, text=msg)
-
+   def ts(bot, update):          # TODO: fix this 
+      try:
+           translator= Translator(to_lang="en")
+           msg = translator.translate(update.message.text)
+           bot.sendMessage(chat_id=update.message.chat_id, text=msg)
+     except:
+           bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n:C")
+     
    def files(bot, update):       # Send source file
       if str(30954744) == str(update.message.chat_id):
            bot.sendDocument(chat_id=update.message.chat_id, document=open('TelegramShy.py', 'rb'))
