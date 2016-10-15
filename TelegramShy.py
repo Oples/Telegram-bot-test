@@ -143,7 +143,7 @@ try:
       t = 0
       try:
          for i in range(len(msg)):
-             directories[t] += msg[i]+'\n'
+             directories[t] += '['+i+']'+ msg[i]+'\n'
              if (i==90):
                  t += 1
          for g in range(len(directories)):
@@ -156,7 +156,7 @@ try:
          raise
 
    def ts(bot, update):          # TODO: fix this translator
-      msg = translator('en', 'zh-TW' , update.message.text)
+      msg = translator('en', , update.message.text)
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
    def files(bot, update):       # Send source file
