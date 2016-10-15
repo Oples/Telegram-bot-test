@@ -7,12 +7,12 @@ from cfg import *
 import asyncio 
 import logging
 import datetime
+# https://github.com/terryyin/google-translate-python YEPPP
+import translate
 import youtube_dl
 from telegram import *
 from telegram.ext import *
 from cleverbot import Cleverbot
-# https://github.com/terryyin/google-translate-python YEPPP
-from translate import Translator
 
 # Inizializyng the asyncronous classes
 loop = asyncio.get_event_loop()
@@ -158,7 +158,7 @@ try:
 
    def ts(bot, update):          # TODO: fix this 
       try:
-           translator= Translator(to_lang="en")
+           translator= translate.Translator(to_lang="en")
            msg = translator.translate(update.message.text)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
       except:
