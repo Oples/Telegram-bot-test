@@ -161,7 +161,7 @@ try:
       mess = str(update.message.text)
       mess = mess.replace('/ts ','')
       try:
-           translator = Translator(to_lang="en")
+           translator = Translator(to_lang="it")
            msg = translator.translate(mess)
            ronf.sleep(0.4)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
