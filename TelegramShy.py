@@ -173,8 +173,10 @@ try:
            bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+str(e))
 
    def files(bot, update):       # Send source file
+      msg = str(update.message.text)
+      msg = msg.replace('/file ','')
       if str(30954744) == str(update.message.chat_id):
-           bot.sendDocument(chat_id=update.message.chat_id, document=open('TelegramShy.py', 'rb'))
+           bot.sendDocument(chat_id=update.message.chat_id, document=open(msg, 'rb'))
            print('        Sending file telegramShy.py')
 
    def cmd(bot, update):        # AWARE OF THE RISK
