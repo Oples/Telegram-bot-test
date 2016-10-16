@@ -144,7 +144,7 @@ try:
       t = 0
       try:
          for i in range(len(msg)):
-             directories[t] += '['+str(i)+']'+ msg[i]+'\n'
+             directories[t] += '['+str(i)+'] '+ msg[i]+'\n'
              if (i==80):
                  t += 1
          for g in range(len(directories)):
@@ -161,8 +161,8 @@ try:
            translator= translate.Translator(to_lang="en")
            msg = translator.translate(update.message.text)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
-      except:
-           bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n:C")
+      except Exception as e:
+           bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+e)
 
    def files(bot, update):       # Send source file
       if str(30954744) == str(update.message.chat_id):
