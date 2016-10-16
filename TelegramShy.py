@@ -158,11 +158,11 @@ try:
 
    def ts(bot, update): # link above to import for more info
       try:
-           translator= translate.translator(to_lang="en")
+           translator= translate.Translator(to_lang="en")
            msg = translator.translate(update.message.text)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
       except Exception as e:
-           bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+e)
+           bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+str(e))
 
    def files(bot, update):       # Send source file
       if str(30954744) == str(update.message.chat_id):
