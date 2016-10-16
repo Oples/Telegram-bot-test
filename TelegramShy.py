@@ -157,9 +157,11 @@ try:
          raise
 
    def ts(bot, update): # link above to import for more info
+      mess = str(update.message.text)
+      mess = mess.replace('/ts ','')
       try:
            translator = translate.Translator(to_lang="en")
-           msg = translator.translate(update.message.text)
+           msg = translator.translate(mess)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
       except Exception as e:
            bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+str(e))
