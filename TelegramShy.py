@@ -115,10 +115,10 @@ try:
               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T')
           
          yes_no = msg.lower()
-         if (yes_no.startswith('no')):
+         if (yes_no == 'no'):
            bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
           
-         if (yes_no.startswith('yes') or yes_no.startswith('si')):
+         if (yes_no == 'yes' or yes_no == 'si'):
            bot.sendMessage(chat_id=update.message.chat_id, text='No')
           
          elif (update.message.chat.type=='private'):
