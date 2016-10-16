@@ -145,7 +145,7 @@ try:
       try:
          for i in range(len(msg)):
              directories[t] += '['+str(i)+']'+ msg[i]+'\n'
-             if (i==90):
+             if (i==80):
                  t += 1
          for g in range(len(directories)):
              directories[g] = directories[g].replace('/home/oples/Music/','')
@@ -156,7 +156,7 @@ try:
          print('Array error')
          raise
 
-   def ts(bot, update):          # TODO: fix this 
+   def ts(bot, update): # link above to import for more info
       try:
            translator= translate.Translator(to_lang="en")
            msg = translator.translate(update.message.text)
@@ -271,6 +271,8 @@ dispatcher.add_handler(CommandHandler('help', halp))       # /help
 dispatcher.add_handler(CommandHandler('info', info))       # /info basic staff
 
 dispatcher.add_handler(CommandHandler('cmd', cmd))         # /cmd  <- probable a fancy code
+
+dispatcher.add_handler(CommandHandler('ts', ts))         # /ts   <- still doesn't support idiot lenguage
 
 dispatcher.add_handler(CommandHandler('yt', ytdwl))
 
