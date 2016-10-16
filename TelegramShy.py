@@ -7,12 +7,13 @@ from cfg import *
 import asyncio 
 import logging
 import datetime
-# https://github.com/terryyin/google-translate-python YEPPP
-import translate
 import youtube_dl
+import time as ronf
 from telegram import *
 from telegram.ext import *
 from cleverbot import Cleverbot
+# https://github.com/terryyin/google-translate-python 
+from translate import Translator
 
 # Inizializyng the asyncronous classes
 loop = asyncio.get_event_loop()
@@ -160,8 +161,9 @@ try:
       mess = str(update.message.text)
       mess = mess.replace('/ts ','')
       try:
-           translator = translate.Translator(to_lang="en")
+           translator = Translator(to_lang="en")
            msg = translator.translate(mess)
+           ronf.sleep(0.4)
            bot.sendMessage(chat_id=update.message.chat_id, text=msg)
       except Exception as e:
            bot.sendMessage(chat_id=update.message.chat_id, text="I can't read this thing!\n"+str(e))
