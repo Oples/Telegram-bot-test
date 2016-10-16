@@ -133,11 +133,11 @@ try:
       uptime = right_now[0].split(':')
       downtime = str(datetime.datetime.now().time())
       downtime = downtime.split(':')
-      msg  = 'Uptime:     '+right_now[0]+'\n'
+      msg  = 'Uptime:       '+right_now[0]+'\n'
       msg += 'rebooting:  '+str(((int(uptime[1])+20)-int(downtime[1])))+'\n'
-      msg += 'Chat id:    '+str(update.message.chat_id)+'\n'
-      msg += 'Type:       '+str(update.message.chat.type)+'\n'
-      #msg += 'First name: '+str(update.message.user.name)
+      msg += 'Chat id:       '+str(update.message.chat_id)+'\n'
+      msg += 'Type:            '+str(update.message.chat.type)+'\n'
+      msg += 'user name:  '+str(update.message.from_user)+'\n'
       #msg += 'Last name:  '+update.message.user.last_name
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
