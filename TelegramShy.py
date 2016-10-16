@@ -24,7 +24,7 @@ right_now = right_now.split('.')
 try:
    #variable assingment
    updater = Updater(token=TOKEN) # Hidden bot token
-   print('\033[037mbooting  '+str( datetime.datetime.now().time())+'\033[0m')               # The token is needed for the bot to log in to an account
+   print('\033[037mbooting  '+str(right_now[0])+'\033[0m')               # The token is needed for the bot to log in to an account
    dispatcher = updater.dispatcher
    mind = Cleverbot()             # Cleverbot functions
    working=0
