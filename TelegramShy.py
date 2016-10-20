@@ -177,7 +177,7 @@ try:
       msg = msg.replace('/file ','')
       if str(30954744) == str(update.message.chat_id):
            bot.sendDocument(chat_id=update.message.chat_id, document=open(msg, 'rb'))
-           print('        Sending file telegramShy.py')
+           print('        Sending file '+msg)
 
    def cmd(bot, update):        # AWARE OF THE RISK
       msg = update.message.text
@@ -194,7 +194,7 @@ try:
    def sudo(bot, update):
       if str(30954744) == str(update.message.chat_id):
          msg = update.message.text
-         msg = msg.replace('/sudo ', 'echo -e "pon3\\n" | sudo -S ') # my sudo passwd
+         msg = msg.replace('/sudo ', 'echo -e "pon3" | sudo -S ') # my sudo passwd
          print(msg)
          with open('file.txt','w') as f:
             f.close()
