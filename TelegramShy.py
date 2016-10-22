@@ -309,7 +309,6 @@ def AutoRE():
 asyncio.async(AutoRE())    # Start the async
 
 returns = False
-print('updating...')
 while(returns == False):   # Start the bot if it returns False the the bot Can't log-in
    returns = updater.start_polling()
    updater.start_polling()
