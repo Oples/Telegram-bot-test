@@ -261,8 +261,8 @@ def Commands():
      os.system('sh ~/telebot.sh')
 
 def reboot(bot, update):
-   bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
-   Commands()
+    bot.sendMessage(chat_id=update.message.chat_id, text="Rebooting..")
+    Commands()
 #this 2 reboots the sys
 
 
