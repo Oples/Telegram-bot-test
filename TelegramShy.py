@@ -98,7 +98,7 @@ try:
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
          try:
             foo = open("blacklist.txt","r")
-         except as e:
+         except Exception as e:
             print("Possible file not found"+e)
             foo = open("blacklist.txt","w")
             foo.close()
