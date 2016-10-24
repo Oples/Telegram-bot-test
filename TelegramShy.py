@@ -103,7 +103,7 @@ try:
             foo = open("blacklist.txt","w")
             foo.close()
          fi = str(foo.read)
-         if (fi.find(str(update.message.chat_id)==-1):
+         if (fi.find(str(update.message.chat_id))==-1):
             msg = update.message.text
             foo.close()
             if (msg.startswith('http://') or msg.startswith('https://')):
