@@ -96,35 +96,43 @@ try:
    # TODO: FIX THIS PLZ ;___;
      
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
-         msg = update.message.text
-         if (msg.startswith('http://') or msg.startswith('https://')):
-           try:
-              with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                  info_dict = ydl.extract_info(msg, download=False)
-                  bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
-                  ydl.download([msg])
-                  video_title = info_dict.get('title', None)
-                  video_title = video_title.replace('|','_')
-                  move_up = str('mv "./'+video_title+'-'+info_dict['id']+'.mp3" "./'+video_title+'.mp3"')
-                  print(move_up)
-                  os.system(move_up)
-                  bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'.mp3', 'rb'), filename=video_title+'.mp3')
-                  os.system("mv ./*.mp3 ~/Music/")
-                  #except DownloadError(message, exc_info):
-                  #bot.sendMessage (message.channel,'Bad Link')
-           except:
-              bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T')
+         try:
+            foo = open("blacklist.txt","r")
+         except as e:
+            print("Possible file not found"+e)
+            foo = open("blacklist.txt","w")
+            foo.close()
+         fi = str(foo.read)
+         if (fi.find(str(update.message.chat_id)==-1):
+            msg = update.message.text
+            foo.close()
+            if (msg.startswith('http://') or msg.startswith('https://')):
+              try:
+                 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                    info_dict = ydl.extract_info(msg, download=False)
+                    bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
+                    ydl.download([msg])
+                    video_title = info_dict.get('title', None)
+                    video_title = video_title.replace('|','_')
+                    move_up = str('mv "./'+video_title+'-'+info_dict['id']+'.mp3" "./'+video_title+'.mp3"')
+                    print(move_up)
+                    os.system(move_up)
+                    bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'.mp3', 'rb'), filename=video_title+'.mp3')
+                    os.system("mv ./*.mp3 ~/Music/")
+                    #except DownloadError(message, exc_info):
+                    #bot.sendMessage (message.channel,'Bad Link')
+              except:
+                 bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T')
+            yes_no = msg.lower()
+            if (yes_no == 'no'):
+               bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
           
-         yes_no = msg.lower()
-         if (yes_no == 'no'):
-           bot.sendMessage(chat_id=update.message.chat_id, text='Yes')
-          
-         if (yes_no == 'yes' or yes_no == 'si'):
-           bot.sendMessage(chat_id=update.message.chat_id, text='No')
-          
-         elif (update.message.chat.type=='private'):
-           bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
-           print(update.message.text)
+            elif (yes_no == 'yes' or yes_no == 'si'):
+               bot.sendMessage(chat_id=update.message.chat_id, text='No')
+            
+            elif (update.message.chat.type=='private'):
+               bot.sendMessage(chat_id=update.message.chat_id, text=mind.ask(update.message.text))
+               print(update.message.text)
 
    def ping(bot, update):         # ez peasy test response
       bot.sendMessage(chat_id=update.message.chat_id, text="Pong!")
