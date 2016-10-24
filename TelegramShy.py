@@ -99,7 +99,7 @@ try:
          try:
             foo = open("blacklist.txt","r")
          except Exception as e:
-            print("Possible file not found"+e)
+            print("Possible file not found"+str(e))
             foo = open("blacklist.txt","w")
             foo.close()
          fi = str(foo.read)
