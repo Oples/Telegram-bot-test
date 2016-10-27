@@ -93,6 +93,42 @@ try:
            bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites')
            working=0
 	
+   def undo(bot,update):
+         try:
+            foo = open("blacklist.txt","r")
+            msg = str(foo.read())
+            if (msg.find(str(update.message.chat_id))!=-1):
+               msg = msg.replace(str(update.message.chat_id),"")
+               foo.close()
+               foo = open("blacklist.txt","w")
+               foo.write(msg)
+               foo.close()
+               bot.sendMessage(chat_id=update.message.chat_id, text='Undo blacklist')
+            else:
+               bot.sendMessage(chat_id=update.message.chat_id, text='This chat is not listed!')
+         except Exception as e:
+            print("Possible file not found"+str(e))
+            foo = open("blacklist.txt","w")
+            foo.close()
+            bot.sendMessage(chat_id=update.message.chat_id, text='This chat is not listed!')
+
+   def blacklisting(bot,update):
+         try:
+            foo = open("blacklist.txt","r")
+            msg = str(foo.read())
+            foo.close()
+            if (msg.find(str(update.message.chat_id))==-1):
+               foo = open("blacklist.txt","a")
+               foo.write(str(update.message.chat_id)+"\n")
+               bot.sendMessage(chat_id=update.message.chat_id, text='BOOM blacklisted!')
+            else:
+               bot.sendMessage(chat_id=update.message.chat_id, text='This chat is already Blacklisted!')
+         except Exception as e:
+            print("Possible file not found"+str(e))
+            foo = open("blacklist.txt","w")
+            foo.write(str(update.message.chat_id))
+            foo.close()
+
    # TODO: FIX THIS PLZ ;___;
      
    def echo(bot, update):      # EVERY MESSAGE THAT IS NOT A COMMAND GOES HERE!
@@ -291,6 +327,10 @@ dispatcher.add_handler(CommandHandler('info', info))       # /info basic staff
 dispatcher.add_handler(CommandHandler('cmd', cmd))         # /cmd  <- probable a fancy code
 
 dispatcher.add_handler(CommandHandler('ts', ts))         # /ts   <- still doesn't support idiot lenguage
+
+dispatcher.add_handler(CommandHandler('blacklist',blacklisting)) # ripperino blacklist
+
+dispatcher.add_handler(CommandHandler('unblacklist',undo)) # ripperino undo blacklist
 
 dispatcher.add_handler(CommandHandler('yt', ytdwl))
 
