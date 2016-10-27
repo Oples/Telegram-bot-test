@@ -6,9 +6,9 @@
  THIS IS NYAN CAT SUPREMACYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY miao miao
 # Features
  /cmd   to execute commands (!be aware it's risky soo use it,modify to private use only!)<br />
- /sudo  same as cmd but with root privilegies<br />
- /ts    traduce english to italian<br />
- /ping  test to response time<br />
- /lant  ping an ip or server<br />
- /info  info about user and chat<br />
- /help  help msgbox
+ /sudo   same as cmd but with root privilegies<br />
+ /ts   traduce english to italian<br />
+ /ping   test to response time<br />
+ /lant   ping an ip or server<br />
+ /info   info about user and chat<br />
+ /help   help msgbox
