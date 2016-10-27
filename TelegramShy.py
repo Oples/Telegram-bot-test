@@ -223,6 +223,19 @@ try:
            bot.sendDocument(chat_id=update.message.chat_id, document=open(msg, 'rb'))
            print('        Sending file '+msg)
 
+   def test(bot, update):
+      msg = update.message.text
+      msg = msg.replace('/lant ', '') 
+      print(msg)
+      with open('file.txt','w') as f: # re-write file
+         f.close()
+      with open('file.txt','r') as f: # read the output of the bash
+         os.system('ping -c 1 '+msg+' >> file.txt')
+         bot.sendMessage(chat_id=update.message.chat_id, text=f.read())
+         f.close()
+         os.system('rm file.txt')     # dirty reset(Not really needed) write the file does replace the content with nothing already
+
+
    def cmd(bot, update):        # AWARE OF THE RISK
       msg = update.message.text
       msg = msg.replace('/cmd ', '') 
@@ -325,6 +338,8 @@ dispatcher.add_handler(CommandHandler('help', halp))       # /help
 dispatcher.add_handler(CommandHandler('info', info))       # /info basic staff
 
 dispatcher.add_handler(CommandHandler('cmd', cmd))         # /cmd  <- probable a fancy code
+
+dispatcher.add_handler(CommandHandler('lant', test))         # /cmd  <- ping an ip if is alive
 
 dispatcher.add_handler(CommandHandler('ts', ts))         # /ts   <- still doesn't support idiot lenguage
 
