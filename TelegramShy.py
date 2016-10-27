@@ -98,7 +98,7 @@ try:
             foo = open("blacklist.txt","r")
             msg = str(foo.read())
             if (msg.find(str(update.message.chat_id))!=-1):
-               msg = msg.replace(str(update.message.chat_id),"")
+               msg = msg.replace(str(update.message.chat_id)+"\n","")
                foo.close()
                foo = open("blacklist.txt","w")
                foo.write(msg)
