@@ -214,7 +214,7 @@ try:
 
    def pong(bot, update): # next time I'll be more savage
       bot.sendMessage(chat_id=update.message.chat_id, text="No!")
-      bot.sendSticker(chat_id=update.message.chat_id, sticker=open("./sticker.webp", 'rb'))
+      bot.sendSticker(chat_id=update.message.chat_id, sticker=open("./more_guns.webp", 'rb'))
       print(update.message.chat_id)
       #reply_keyboard = ['ping']
       #update.message.reply_text('',)
