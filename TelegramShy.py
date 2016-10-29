@@ -20,7 +20,9 @@ loop = asyncio.get_event_loop()
 future = asyncio.Future()
 right_now = str(datetime.datetime.now().time())
 right_now = right_now.split('.')
-
+mypath = str(os.path.expanduser("~"))
+mypath = mypath.replace('\\','/')
+mypath = mypath + "/Music/"
 try:
    #variable assingment
    updater = Updater(token=TOKEN) # Hidden bot token
@@ -186,8 +188,7 @@ try:
       bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
    def direc(bot, update):
-      mypath="/home/oples/Music/"
-      msg = glob.glob("/home/oples/Music/*.mp3")
+      msg = glob.glob(mypath+"*.mp3")
       i = 0
       directories = ['','']
       t = 0
@@ -197,7 +198,7 @@ try:
              if (i==80):
                  t += 1
          for g in range(len(directories)):
-             directories[g] = directories[g].replace('/home/oples/Music/','')
+             directories[g] = directories[g].replace(mypath,'')
          print(directories)
          for h in range(len(directories)):
              bot.sendMessage(chat_id=update.message.chat_id, text=directories[h])
