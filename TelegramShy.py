@@ -138,7 +138,7 @@ try:
             print("Possible file not found"+str(e))
             foo = open("blacklist.txt","w")
             foo.close()
-         fi = str(foo.read)
+         fi = str(foo.read())
          if (fi.find(str(update.message.chat_id))==-1):
             msg = update.message.text
             foo.close()
