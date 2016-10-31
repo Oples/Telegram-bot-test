@@ -71,7 +71,7 @@ try:
 
 
    def start(bot, update):      # Wellcome message
-      bot.sendMessage(chat_id=update.message.chat_id, text="I'm a beautiful pone, please talk to me m8!")
+      bot.sendMessage(chat_id=update.message.chat_id, text="I'm a bit bot, please talk to me m8!")
         
    def ytdwl(bot, update):     # /yt command
         msg = update.message.text
