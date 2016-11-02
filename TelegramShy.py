@@ -324,7 +324,7 @@ def reboot(bot, update):
 #this 2 reboots the sys
 
 
-dispatcher.run_async(MessageHandler([Filters.text],echo))  #async all messages a part commands
+dispatcher.add_handler(MessageHandler([Filters.text],dispatcher.run_async(echo)))  #async all messages a part commands
 
 #Messages handler!
 dispatcher.add_handler(CommandHandler('start', start))     # /start Telegram force the user to use this command before chatting
