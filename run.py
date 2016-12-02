@@ -1,4 +1,5 @@
 import os
+import time
 import getpass
 
 if (os.name == 'posix'):
@@ -41,9 +42,16 @@ if (os.name == 'posix'):
     else:
          print('[\033[31mFail\033[0m] youtube-dl')
             
+    if (os.system('''wget https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py''') == 0):
+        print("[\033[32mok\033[0m] translate")
+    else:
+         print('[\033[31mFail\033[0m] translate')
+            
     print('Done!\n')
     print('all libraries installed now')
-    print('starting the bot!\n')
+    print('starting the bot!')
+    print('\033[32mctr+z to stop\033[0m\n')
+    time.sleep(3)
     while True:
         try:
             open('TelegramShy.py','r')
@@ -53,5 +61,6 @@ if (os.name == 'posix'):
             print('Lo scarico :3')
             count = 3
             while ( (not(os.system('wget https://raw.githubusercontent.com/Oples/Telegram-bot-test/master/TelegramShy.py') == 0)) and (count > 0)):
+                time.sleep(1)
                 print('Retrying ...')
                 count -= 1
