@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import getpass
 
@@ -64,3 +65,8 @@ if (os.name == 'posix'):
                 time.sleep(1)
                 print('Retrying ...')
                 count -= 1
+            print('Errore nel scaricare il file!')
+            sys.exit(1)
+else:
+    print('Windows coming soon ...')
+
