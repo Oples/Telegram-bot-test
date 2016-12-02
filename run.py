@@ -75,8 +75,9 @@ if (os.name == 'posix'):
                 raise FileNotFoundError('File is corrupted')
     except FileNotFoundError:
         token = input('Please insert your bot Token here: ')
+        chat_id = input('(If you don\'t know it go to @Oples_bot and send /info)\n Please insert your Telegram chat_id here: ')
         with open('cfg.py','w') as w:
-            w.write('TOKEN = \'\'\''+token+'\'\'\'')
+            w.write('TOKEN = \'\'\''+token+'\'\'\'\n' + 'OWNER_ID = \'\'\''+chat_id+'\'\'\'\n')
     
     print('\nstarting the bot!')
     # ctrl+z per fermare!
