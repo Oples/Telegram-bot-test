@@ -3,6 +3,8 @@ import getpass
 
 if (os.name == 'posix'):
     print('Initializing the Installation')
+    print('Ciao ' + os.environ.get('USER') + '!')
+    print('propietario di '+os.popen('cat /etc/hostname').read())
     while True:
         passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
         if passwd or os.environ.get('USER') == 'pi':
@@ -40,4 +42,5 @@ if (os.name == 'posix'):
          print('[\033[31mFail\033[0m] youtube-dl')
             
     print('\nDone!')
-    print('all librarys installed now starting the bot!')
+    print('all librarys installed now')
+    print('starting the bot!')
