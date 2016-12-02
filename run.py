@@ -5,7 +5,7 @@ if (os.name == 'posix'):
     print('Initializing the Installation')
     while True:
         passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
-        if passwd:
+        if passwd or os.environ.get('USER') == 'pi':
             break
     
     if (os.system('pip3 >> /dev/null') == 0):
