@@ -95,8 +95,9 @@ if (os.name == 'posix'):
                 time.sleep(1)
                 print('Retrying ...')
                 count -= 1
-            print('Errore nel scaricare il file!')
-            sys.exit(1)
+            if (count == 0):
+                print('Errore nel scaricare il file!')
+                sys.exit(1)
 else:
     print('Windows coming soon ...')
 
