@@ -42,5 +42,16 @@ if (os.name == 'posix'):
          print('[\033[31mFail\033[0m] youtube-dl')
             
     print('Done!\n')
-    print('all librarys installed now')
-    print('starting the bot!')
+    print('all libraries installed now')
+    print('starting the bot!\n')
+    while True:
+        try:
+            open('TelegramShy.py','r')
+            os.system('python3 TelegramShy.py')
+        except FileNotFoundError:
+            print('File non trovato!')
+            print('Lo scarico :3')
+            count = 3
+            while ( (not(os.system('wget https://raw.githubusercontent.com/Oples/Telegram-bot-test/master/TelegramShy.py') == 0)) and (count > 0)):
+                print('Retrying ...')
+                count -= 1
