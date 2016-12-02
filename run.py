@@ -2,7 +2,7 @@ import os
 import getpass
 
 if (os.name == 'posix'):
-    print('Initializing the Installation')
+    print('Initializing the Installation\n')
     print('Ciao ' + os.environ.get('USER') + '!')
     print('propietario di '+os.popen('cat /etc/hostname').read())
     while True:
@@ -11,7 +11,7 @@ if (os.name == 'posix'):
             break
     
     if (os.system('pip3 >> /dev/null') == 0):
-        print("[\033[32mok\033[0m] pip3")
+        print("\n[\033[32mok\033[0m] pip3")
         
     else:
         print('[\033[31mFail\033[0m] pip3')
@@ -41,6 +41,6 @@ if (os.name == 'posix'):
     else:
          print('[\033[31mFail\033[0m] youtube-dl')
             
-    print('\nDone!')
+    print('Done!\n')
     print('all librarys installed now')
     print('starting the bot!')
