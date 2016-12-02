@@ -106,36 +106,68 @@ try:
         msg = update.message.text
         msg = msg.replace('/yt ','')
         print(msg)
-        try:
-           # get youtube downoader and search for the song
-           with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
-               # get entries
-               info_dict = ydl.extract_info(msg, download=False)
-               # for the async reboot now useless
-               # TODO: remove it
-               working=1
-               # Text if the search was succesfull
-               bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
-               # start downloading
-               with youtube_dl.YoutubeDL(ydl_opts) as yadl:
-                   yadl.download([info_dict['entries'][0]['webpage_url']])
-               # Issue for title names need fix
-               video_title = str(info_dict['entries'][0]['title'])
-               video_title = video_title.replace('|','_')
-               video_title = video_title.replace('"','')
-               video_title = video_title.replace('?','')
-               # debug
-               print(video_title+'-'+str(info_dict['entries'][0]['id'])+'.mp3')
-               # send file by name
-               bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['entries'][0]['id']+'.mp3', 'rb'), filename=video_title+'.mp3')
-               # move it to music dir
-               os.system("mv ./*.mp3 ~/Music/")
-               # done working set to 0
-               working = 0
-        except Exception as w:
-           # on error
-           bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites\n'+str(w))
-           working=0
+        if not(msg.startswith('http://') or msg.startswith('https://')):
+            try:
+               # get youtube downoader and search for the song
+               with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
+                   # get entries
+                   info_dict = ydl.extract_info(msg, download=False)
+                   # for the async reboot now useless
+                   # TODO: remove it
+                   working=1
+                   # Text if the search was succesfull
+                   bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
+                   # start downloading
+                   with youtube_dl.YoutubeDL(ydl_opts) as yadl:
+                       yadl.download([info_dict['entries'][0]['webpage_url']])
+                   # Issue for title names need fix
+                   video_title = str(info_dict['entries'][0]['title'])
+                   video_title = video_title.replace('|','_')
+                   video_title = video_title.replace('"','')
+                   video_title = video_title.replace('?','')
+                   # debug
+                   print(video_title+'-'+str(info_dict['entries'][0]['id'])+'.mp3')
+                   # send file by name
+                   bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['entries'][0]['id']+'.mp3', 'rb'), filename=video_title+'.mp3')
+                   # move it to music dir
+                   os.system("mv ./*.mp3 ~/Music/")
+                   # done working set to 0
+                   working = 0
+            except Exception as w:
+               # on error
+               bot.sendMessage(chat_id=update.message.chat_id, text='Bad search :T \n\n'+str(w))
+               working=0
+        else:
+            try:
+               # get youtube downoader and search for the song
+               with youtube_dl.YoutubeDL(ydl_opts1) as ydl:
+                   # get entries
+                   info_dict = ydl.extract_info(msg, download=False)
+                   # for the async reboot now useless TODO: remove it
+                   working=1
+                   # Text if the search was succesfull
+                   bot.sendMessage(chat_id=update.message.chat_id, text='Downloading ...')
+                   for i in range(len(info_dict['entries'])):
+                       # start downloading
+                       with youtube_dl.YoutubeDL(ydl_opts) as yadl:
+                           yadl.download([info_dict['entries'][i]['webpage_url']])
+                       # Issue for title names need fix
+                       bot.sendMessage(chat_id=update.message.chat_id, text ='Track n'+str(i+1)+':\nName: '+info_dict['entries'][i]['title'])
+                       video_title = str(info_dict['entries'][i]['title'])
+                       video_title = video_title.replace('|','_')
+                       video_title = video_title.replace('"','')
+                       video_title = video_title.replace('?','')
+                       # debug
+                       print(video_title+'-'+str(info_dict['entries'][i]['id'])+'.mp3') # send file by name
+                       bot.sendDocument(chat_id=update.message.chat_id, document=open(video_title+'-'+info_dict['entries'][i]['id']+'.mp3', 'rb'), filename=video_title+'.mp3') # move it to music dir
+                       os.system("mv ./*.mp3 ~/Music/")
+                       # done working set to 0
+                       working = 0
+            except Exception as w:
+               # on error
+               bot.sendMessage(chat_id=update.message.chat_id, text='Bad link :T \n\nGive me audio/video sites\n'+str(w))
+               working=0
+
 
    def undo(bot,update): # /unblacklist
          """ delete previus user that do not want
@@ -380,7 +412,7 @@ except KeyboardInterrupt:
 except Exception as w:
    # send error do chat
    print('\n  ERROR\n'+ str(w) )
-   bot.sendMessage(chat_id=OWNER_ID, text='HALP!\n'+str(w))
+   bot.sendMessage(chat_id=30954744, text='HALP!\n'+str(w))
    os.system('sh ~/telebot.sh')
 
 #away from the exceptions
