@@ -412,7 +412,7 @@ except KeyboardInterrupt:
 except Exception as w:
    # send error do chat
    print('\n  ERROR\n'+ str(w) )
-   bot.sendMessage(chat_id=30954744, text='HALP!\n'+str(w))
+   bot.sendMessage(chat_id=OWNER_ID, text='HALP!\n'+str(w))
    os.system('sh ~/telebot.sh')
 
 #away from the exceptions
