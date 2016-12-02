@@ -16,8 +16,20 @@ if (os.name == 'posix'):
         os.system('''echo -e "'''+passwd+'''\n" | sudo -S apt-get install python3-pip''')
         
     print('[installando le librerie]')
-    os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install Cleverbot --upgrade''')
-    os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install python-telegram-bot --upgrade''')
-    os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install youtube-dl --upgrade''')
+    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install Cleverbot --upgrade >> /dev/null''') == 0):
+        print("[\033[32mok\033[0m] Cleverbot")
+    else:
+         print('[\033[31mFail\033[0m] Cleverbot')
+            
+    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install python-telegram-bot --upgrade >> /dev/null''') == 0):
+        print("[\033[32mok\033[0m] python-telegram-bot")
+    else:
+         print('[\033[31mFail\033[0m] python-telegram-bot')
+            
+    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install youtube-dl --upgrade >> /dev/null''') == 0):
+        print("[\033[32mok\033[0m] youtube-dl")
+    else:
+         print('[\033[31mFail\033[0m] youtube-dl')
+            
     print('\nDone!')
     print('all librarys installed now starting the bot!')
