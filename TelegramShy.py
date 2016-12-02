@@ -39,7 +39,7 @@ try:
       update_id = None
    
    
-   bot.sendMessage(chat_id=30954744, text='BACK FROM THE DEAD')
+   bot.sendMessage(chat_id=OWNER_ID, text='BACK FROM THE DEAD')
        
        
    dispatcher = updater.dispatcher
@@ -280,7 +280,7 @@ try:
    def files(bot, update):       # Send source file
       msg = str(update.message.text)
       msg = msg.replace('/file ','')
-      if str(30954744) == str(update.message.chat_id):
+      if str(OWNER_ID) == str(update.message.chat_id):
            bot.sendDocument(chat_id=update.message.chat_id, document=open(msg, 'rb'))
            print('        Sending file '+msg)
 
@@ -312,7 +312,7 @@ try:
           
    @run_async
    def sudo(bot, update):
-      if str(30954744) == str(update.message.chat_id):
+      if str(OWNER_ID) == str(update.message.chat_id):
           msg = update.message.text
           msg = msg.replace('/sudo ', 'echo -e "pon3\n" | sudo -S ') # my sudo passwd
           print(msg)
@@ -380,7 +380,7 @@ except KeyboardInterrupt:
 except Exception as w:
    # send error do chat
    print('\n  ERROR\n'+ str(w) )
-   bot.sendMessage(chat_id=30954744, text='HALP!\n'+str(w))
+   bot.sendMessage(chat_id=OWNER_ID, text='HALP!\n'+str(w))
    os.system('sh ~/telebot.sh')
 
 #away from the exceptions
