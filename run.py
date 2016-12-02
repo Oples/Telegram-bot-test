@@ -1,18 +1,29 @@
+#!/usr/bin/python3
 import os
 import sys
 import time
 import getpass
 import urllib.request
 
+# Only unix like systems
 if (os.name == 'posix'):
     print('Initializing the Installation\n')
+    # user name
     print('Ciao ' + os.environ.get('USER') + '!')
+    # hostname
     print('propietario di '+os.popen('cat /etc/hostname').read())
-    while True:
-        passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
-        if passwd or os.environ.get('USER') == 'pi':
-            break
     
+    # richesta password
+    while True:
+        # prendi la password
+        passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
+        # controlla la password
+        if os.system('echo -e "' +passwd+ '\n" | sudo -S echo') == 0:
+            break
+        else:
+            print('come on m8!')
+    
+    # controlla se pip è installato
     if (os.system('pip3 >> /dev/null') == 0):
         print("\n[\033[32mok\033[0m] pip3")
         
@@ -21,6 +32,7 @@ if (os.name == 'posix'):
         print('\ndevi installare pip3')
         print('Lo installo io?')
         print('\nInstallando ..')
+        # download and install pip3
         os.system('wget https://bootstrap.pypa.io/get-pip.py')
         if (os.system('''echo -e "'''+passwd+'''\n" | sudo -S python3 get-pip.py >> /dev/null''') == 0 ):
             print('[\033[32mInstalled\033[0m] pip3')
@@ -67,6 +79,7 @@ if (os.name == 'posix'):
             w.write('TOKEN = \'\'\''+token+'\'\'\'')
     
     print('\nstarting the bot!')
+    # ctrl+z per fermare!
     print('\033[32mctr+z\033[0m to stop\n')
     time.sleep(7)
     while True:
