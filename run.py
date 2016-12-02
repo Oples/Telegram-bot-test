@@ -2,6 +2,7 @@ import os
 import sys
 import time
 import getpass
+import urllib.request
 
 if (os.name == 'posix'):
     print('Initializing the Installation\n')
@@ -38,10 +39,12 @@ if (os.name == 'posix'):
     else:
          print('[\033[31mFail\033[0m] python-telegram-bot')
             
-    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install youtube-dl >> /dev/null''') == 0):
-        print("[\033[32mok\033[0m] youtube-dl")
-    else:
-         print('[\033[31mFail\033[0m] youtube-dl')
+    try:
+        with open('translate.py','w') as file:
+            file.write(str(urllib.request.urlopen("https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py").read()))
+            print("[\033[32mok\033[0m] youtube-dl")
+    except Exception as e:
+         print('[\033[31mFail\033[0m] youtube-dl\n' + str(e))
             
     if (os.system('''curl https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py >> translate.py''') == 0):
         print("[\033[32mok\033[0m] translate")
