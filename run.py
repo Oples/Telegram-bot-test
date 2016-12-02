@@ -4,8 +4,9 @@ import getpass
 if (os.name == 'posix'):
     print('Initializing the Installation')
     
-    if (os.system('pip3') == 0):
+    if (os.system('pip3 >> /dev/null') == 0):
         print("[\033[32mok\033[0m] pip3")
+        passwd = getpass.getpass('ho bisogno di essere root per installare le librerie\npasswd: ')
         
     else:
         print('[\033[31mFail\033[0m] pip3')
