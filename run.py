@@ -42,7 +42,7 @@ if (os.name == 'posix'):
     else:
          print('[\033[31mFail\033[0m] youtube-dl')
             
-    if (os.system('''wget https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py''') == 0):
+    if (os.system('''wget https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py -o translate.py >> /dev/null''') == 0):
         print("[\033[32mok\033[0m] translate")
     else:
          print('[\033[31mFail\033[0m] translate')
@@ -51,7 +51,7 @@ if (os.name == 'posix'):
     print('all libraries installed now')
     print('starting the bot!')
     print('\033[32mctr+z to stop\033[0m\n')
-    time.sleep(3)
+    time.sleep(7)
     while True:
         try:
             open('TelegramShy.py','r')
