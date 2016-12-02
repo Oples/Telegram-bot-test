@@ -3,7 +3,10 @@ import getpass
 
 if (os.name == 'posix'):
     print('Initializing the Installation')
-    while not(( passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m'))
+    while True:
+        passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
+        if passwd:
+            break
     
     if (os.system('pip3 >> /dev/null') == 0):
         print("[\033[32mok\033[0m] pip3")
