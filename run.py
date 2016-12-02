@@ -13,7 +13,12 @@ if (os.name == 'posix'):
         print('\ndevi installare pip3')
         print('Lo installo io?')
         print('\nInstallando ..')
-        os.system('''echo -e "'''+passwd+'''\n" | sudo -S apt-get install python3-pip''')
+        os.system('wget https://bootstrap.pypa.io/get-pip.py')
+        if (os.system('''echo -e "'''+passwd+'''\n" | sudo -S python3 get-pip.py >> /dev/null''') == 0 ):
+            print('[\033[32mInstalled\033[0m] pip3')
+        else:
+            print('[\033[31mFatal\033[0m] pip3')
+        os.system('rm get-pip.py')
         
     print('[installando le librerie]')
     if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install Cleverbot >> /dev/null''') == 0):
