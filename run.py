@@ -43,15 +43,28 @@ if (os.name == 'posix'):
     else:
          print('[\033[31mFail\033[0m] youtube-dl')
             
-    if (os.system('''wget https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py -o translate.py >> /dev/null''') == 0):
+    if (os.system('''curl https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py >> translate.py''') == 0):
         print("[\033[32mok\033[0m] translate")
     else:
          print('[\033[31mFail\033[0m] translate')
             
     print('Done!\n')
-    print('all libraries installed now')
-    print('starting the bot!')
-    print('\033[32mctr+z to stop\033[0m\n')
+    print('all libraries installed')
+    try:
+        with open('cfg.py','r') as f:
+            if (str(f.read()).startswith('TOKEN =')):
+                print('[\033[32mok\033[0m] token')
+            else:
+                print('[\033[31m\033[0m] token')
+                os.system('rm cfg.py')
+                raise FileNotFoundError('File is corrupted')
+    except FileNotFoundError:
+        token = input('Please insert your bot Token here: ')
+        with open('cfg.py','w') as w:
+            w.write('TOKEN = \'\'\''+token+'\'\'\'')
+    
+    print('\nstarting the bot!')
+    print('\033[32mctr+z\033[0m to stop\n')
     time.sleep(7)
     while True:
         try:
@@ -59,7 +72,7 @@ if (os.name == 'posix'):
             os.system('python3 TelegramShy.py')
         except FileNotFoundError:
             print('File non trovato!')
-            print('Lo scarico :3')
+            print('I\'ll download it for you :3')
             count = 3
             while ( (not(os.system('wget https://raw.githubusercontent.com/Oples/Telegram-bot-test/master/TelegramShy.py') == 0)) and (count > 0)):
                 time.sleep(1)
