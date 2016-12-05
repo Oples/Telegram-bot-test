@@ -58,7 +58,7 @@ if (os.name == 'posix'):
             
     try:
         with open('translate.py','w') as file:
-            file.write(urllib.request.urlopen("https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py").read())
+            file.write(str(urllib.request.urlopen("https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py").read(), 'UTF-8'))
             print("[\033[32mok\033[0m] translate\n")
     except Exception as e:
         print('[\033[31mFail\033[0m] translate\n' + str(e))
