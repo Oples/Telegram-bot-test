@@ -29,10 +29,10 @@ if (os.name == 'posix'):
         print('\ndevi installare pip')
         
         lel = ""
-        while (lel.lower() == 'y' or lel.lower() ='yes' or lel.lower() ='yep' or lel.lower() == 'n' or lel.lower() ='no' or lel.lower() ='nope'):
+        while not(lel.lower() == 'y' or lel.lower() == 'yes' or lel.lower() == 'yep' or lel.lower() == 'n' or lel.lower() == 'no' or lel.lower() == 'nope'):
             lel = input('Lo installo io?[Y/n] ') 
             
-        if (lel.lower() == 'y' or lel.lower() ='yes' or lel.lower() ='yep'):
+        if (lel.lower() == 'y' or lel.lower() == 'yes' or lel.lower() == 'yep'):
             print('\nInstallando ..')
             # download and install pip3
             os.system('wget https://bootstrap.pypa.io/get-pip.py')
@@ -50,17 +50,17 @@ if (os.name == 'posix'):
             print('sudo python3 get-pip.py')
         
     print('\n[installando le librerie]')
-    if (os.system(''' sudo -SH pip3 install Cleverbot >> /dev/null''') == 0):
+    if (os.system(' sudo -SH pip install Cleverbot >> /dev/null ') == 0):
         print("[\033[32mok\033[0m] Cleverbot")
     else:
          print('[\033[31mFail\033[0m] Cleverbot')
             
-    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install python-telegram-bot >> /dev/null''') == 0):
+    if (os.system(' sudo -SH pip install python-telegram-bot >> /dev/null') == 0):
         print("[\033[32mok\033[0m] python-telegram-bot")
     else:
          print('[\033[31mFail\033[0m] python-telegram-bot')
             
-    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install youtube-dl >> /dev/null''') == 0):
+    if (os.system(' sudo -SH pip install youtube-dl >> /dev/null') == 0):
          print("[\033[32mok\033[0m] youtube-dl")
     else:
          print('[\033[31mFail\033[0m] youtube-dl\n' + str(e))
@@ -72,7 +72,7 @@ if (os.name == 'posix'):
     except Exception as e:
         print('[\033[31mFail\033[0m] translate\n' + str(e))
             
-        if (os.system('''curl https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py >> translate.py''') == 0):
+        if (os.system('wget https://raw.githubusercontent.com/terryyin/google-translate-python/master/translate.py ') == 0):
             print("[\033[32mok\033[0m] translate")
         else:
             print('[\033[31mFail\033[0m] translate')
@@ -94,25 +94,36 @@ if (os.name == 'posix'):
             w.write('TOKEN = \'\'\''+token+'\'\'\'\n' + 'OWNER_ID = \'\'\''+chat_id+'\'\'\'\n')
     
     print('\nstarting the bot!')
+
     # ctrl+z per fermare!
     print('\033[32mctr+z\033[0m to stop\n')
+
     time.sleep(7)
+
+    # Bot sempre aperto in caso di bug
     while True:
         try:
             open('TelegramShy.py','r')
             os.system('python3 TelegramShy.py')
+
         except FileNotFoundError:
             print('File non trovato!')
-            print('I\'ll download it for you :3')
+            print(" I'll download it for you :3")
+
+            # retryes
             count = 3
+
             while ( (not(os.system('wget https://raw.githubusercontent.com/Oples/Telegram-bot-test/master/TelegramShy.py') == 0)) and (count > 0)):
+
                 time.sleep(1)
                 print('Retrying ...')
                 count -= 1
+
             if (count == 0):
                 print('Errore nel scaricare il file!')
                 sys.exit(1)
-else:
+
+else: # Windows installation
     import subprocess
     
     print('Initializing the Installation\n')
@@ -124,4 +135,3 @@ else:
         print("\n[ok] pip")
     else:
         print("\n[Fail] pip")
-
