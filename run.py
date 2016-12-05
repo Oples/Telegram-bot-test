@@ -13,35 +13,44 @@ if (os.name == 'posix'):
     # hostname
     print('propietario di '+os.popen('cat /etc/hostname').read())
     
+    passwd = ""
     # richesta password
-    while True:
+    while os.system('echo "' +passwd+ '" | sudo -S echo') != 0:
         # prendi la password
         passwd = getpass.getpass('ho bisogno di essere root!\npasswd:\033[7m\033[5m\033[0m')
         # controlla la password
-        if os.system('echo -e "' +passwd+ '\n" | sudo -S echo') == 0:
-            break
-        else:
-            print('come on m8!')
     
     # controlla se pip è installato
-    if (os.system('pip3 >> /dev/null') == 0):
-        print("\n[\033[32mok\033[0m] pip3")
+    if (os.system('pip >> /dev/null') == 0):
+        print("\n[\033[32mok\033[0m] pip")
         
     else:
-        print('[\033[31mFail\033[0m] pip3')
-        print('\ndevi installare pip3')
-        print('Lo installo io?')
-        print('\nInstallando ..')
-        # download and install pip3
-        os.system('wget https://bootstrap.pypa.io/get-pip.py')
-        if (os.system('''echo -e "'''+passwd+'''\n" | sudo -S python3 get-pip.py >> /dev/null''') == 0 ):
-            print('[\033[32mInstalled\033[0m] pip3')
+        print('[\033[31mFail\033[0m] pip')
+        print('\ndevi installare pip')
+        
+        lel = ""
+        while (lel.lower() == 'y' or lel.lower() ='yes' or lel.lower() ='yep' or lel.lower() == 'n' or lel.lower() ='no' or lel.lower() ='nope'):
+            lel = input('Lo installo io?[Y/n] ') 
+            
+        if (lel.lower() == 'y' or lel.lower() ='yes' or lel.lower() ='yep'):
+            print('\nInstallando ..')
+            # download and install pip3
+            os.system('wget https://bootstrap.pypa.io/get-pip.py')
+            
+            if (os.system('echo "'+passwd+'" | sudo -S python3 get-pip.py >> /dev/null') == 0 ):
+                print('[\033[32mInstalled\033[0m] pip3')
+            else:
+                print('[\033[31mFatal\033[0m] pip3')
+            os.system('rm get-pip.py')
         else:
             print('[\033[31mFatal\033[0m] pip3')
-        os.system('rm get-pip.py')
+            print('\nif you want to do it manually go to: ')
+            print('https://bootstrap.pypa.io/get-pip.py')
+            print('and do: ')
+            print('sudo python3 get-pip.py')
         
     print('\n[installando le librerie]')
-    if (os.system('''echo -e "'''+passwd+'''\n" | sudo -SH pip3 install Cleverbot >> /dev/null''') == 0):
+    if (os.system(''' sudo -SH pip3 install Cleverbot >> /dev/null''') == 0):
         print("[\033[32mok\033[0m] Cleverbot")
     else:
          print('[\033[31mFail\033[0m] Cleverbot')
@@ -104,5 +113,15 @@ if (os.name == 'posix'):
                 print('Errore nel scaricare il file!')
                 sys.exit(1)
 else:
-    print('Windows coming soon ...')
+    import subprocess
+    
+    print('Initializing the Installation\n')
+    # user name
+    print('Ciao ' + os.environ.get('USER') + '!')
+
+    # controlla se pip è installato
+    if (subprocess.check_output('pip3', shell=False) != 0):
+        print("\n[ok] pip")
+    else:
+        print("\n[Fail] pip")
 
