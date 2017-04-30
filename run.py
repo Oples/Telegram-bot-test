@@ -9,9 +9,20 @@ import urllib.request
 if (os.name == 'posix'):
     print('Initializing the Installation\n')
     # user name
-    print('Ciao ' + os.environ.get('USER') + '!')
+    name = os.environ.get('USER')
+    if (name == None):
+    # if the name is still null
+        name = 'Anon'
+
+    print('Hello ' + name + '!')
+    
     # hostname
-    print('propietario di '+os.popen('cat /etc/hostname').read())
+    host = os.environ.get('HOSTNAME')
+    # if the host is still null
+    if (host == None):
+        host = '<None>'
+        
+    print('Owner of ' + host)
     
     passwd = ""
     # richesta password
@@ -127,8 +138,22 @@ else: # Windows installation
     import subprocess
     
     print('Initializing the Installation\n')
+    
     # user name
-    print('Ciao ' + os.environ.get('USER') + '!')
+    name = os.environ.get('USERNAME')
+    if (name == None):
+    # if the name is still null
+        name = 'Anon'
+        
+    print('Hello ' + name)
+    
+    # hostname
+    host = os.environ.get('USERDOMAIN')
+    # if the host is still null
+    if (host == None):
+        host = '<None>'
+        
+    print('Owner of ' + host)
 
     # controlla se pip è installato
     if (subprocess.check_output('pip3', shell=False) != 0):
