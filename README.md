@@ -1,5 +1,5 @@
 # Telegram-bot-test
-[![license](https://img.shields.io/github/license/Oples/Telegram-bot-test.svg)(https://github.com/Oples/Telegram-bot-test/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/Oples/Telegram-bot-test.svg)](https://github.com/Oples/Telegram-bot-test/blob/master/LICENSE)
 
  This bot is a bit buggy after 20 minutes it stops 
  soo I've made an asyncronus time to reboot it all up
