@@ -1,5 +1,5 @@
 # Telegram-bot-test
-[![License][licensesvg]][license]
+|license|
  This bot is a bit buggy after 20 minutes it stops 
  soo I've made an asyncronus time to reboot it all up
  :3 well a part that it should work properly 
